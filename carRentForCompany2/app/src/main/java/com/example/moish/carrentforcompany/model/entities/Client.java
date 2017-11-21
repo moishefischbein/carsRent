@@ -9,10 +9,11 @@ public class Client {
 
     String lastName;
     String firstName;
-    long id;
+    
     String phoneNumber;
     String email;
     long creditCardNumber;
+
 
     public Client() {
     }
