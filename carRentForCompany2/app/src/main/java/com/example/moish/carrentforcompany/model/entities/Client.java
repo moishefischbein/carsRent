@@ -12,7 +12,7 @@ public class Client {
     int id;
     String phoneNumber;
     String email;
-    long creditCardNumber;
+    int creditCardNumber;
 
     public Client() {
     }
