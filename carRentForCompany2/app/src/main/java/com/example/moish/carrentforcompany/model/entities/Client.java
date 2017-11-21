@@ -9,7 +9,7 @@ public class Client {
 
     String lastName;
     String firstName;
-    int id;
+    long id;
     String phoneNumber;
     String email;
     int creditCardNumber;
