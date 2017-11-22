@@ -3,6 +3,7 @@ package com.example.moish.carrentforcompany.model.datasource;
 import android.content.ContentValues;
 
 import com.example.moish.carrentforcompany.model.backend.DB_manager;
+import com.example.moish.carrentforcompany.model.backend.Functions;
 import com.example.moish.carrentforcompany.model.entities.Branch;
 import com.example.moish.carrentforcompany.model.entities.CarModel;
 import com.example.moish.carrentforcompany.model.entities.Client;
@@ -17,12 +18,12 @@ import java.util.List;
 
     public class  List_DBManager implements DB_manager {
 
-    static List<Client> cliens;
+    static List<Client> clients;
     static List<CarModel> carModels;
     static List<Branch> branches;
 
     static {
-        cliens = new ArrayList<>();
+        clients = new ArrayList<>();
         carModels = new ArrayList<>();
         branches = new ArrayList<>();
     }
@@ -30,7 +31,9 @@ import java.util.List;
 
     @Override
     public long addClient(ContentValues client) {
-        return 0;
+
+        clients.add(Functions.contentValuesToClient(client));
+        return Functions.contentValuesToClient(client).getId();
     }
 
     @Override

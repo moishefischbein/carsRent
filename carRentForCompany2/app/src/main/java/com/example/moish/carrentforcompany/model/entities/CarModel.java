@@ -17,7 +17,7 @@ public class CarModel {
         return modelCode;
     }
 
-    public void setModelode(int modelCode) {
+    public void setModelCode(int modelCode) {
         this.modelCode = modelCode;
     }
 
