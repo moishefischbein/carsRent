@@ -16,8 +16,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".controller.reserveActivity" />
-        <activity android:name=".controller.carActivity"></activity>
+        <activity android:name=".controller.BranchActivity" />
+        <activity android:name=".controller.CarModelActivity" />
+        <activity android:name=".controller.ClientActivity"></activity>
     </application>
 
 </manifest>
