@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">carRentForCompany</string>
+    <string name="title_activity_reserve">reserveActivity</string>
 </resources>
