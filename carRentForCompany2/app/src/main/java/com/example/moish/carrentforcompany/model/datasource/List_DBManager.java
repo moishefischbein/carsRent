@@ -9,7 +9,10 @@ import com.example.moish.carrentforcompany.model.entities.CarModel;
 import com.example.moish.carrentforcompany.model.entities.Client;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
+
+import static android.R.id.list;
 
 /**
  * Created by moish on 16/11/2017.
@@ -28,7 +31,20 @@ import java.util.List;
         branches = new ArrayList<>();
     }
 
+    public boolean isThisClientExist(ContentValues contentValueClient)
+    {
+        //receive the Client from clientContentValues
+        Client client = Functions.contentValuesToClient(contentValueClient);
+        //if exist this Client in the List of clients
+        for (Iterator<Client> iter = clients.iterator(); iter.hasNext(); ) {
+            Client element = iter.next();
+            if(element.getId()==client.getId());
 
+            return true;
+        }
+        return false;
+
+    }
     @Override
     public long addClient(ContentValues client) {
 
@@ -38,6 +54,7 @@ import java.util.List;
 
     @Override
     public boolean removeClient(long id) {
+
         return false;
     }
 
