@@ -37,9 +37,9 @@ import static android.R.id.list;
         cars = new ArrayList<>();
     }
 
-<<<<<<< HEAD
+
     //----------------------Client Functions-----------------//
-=======
+
     public boolean isThisClientExist(long id)
     {
 
@@ -53,7 +53,7 @@ import static android.R.id.list;
         return false;
 
     }
->>>>>>> a92f3391fc274eff93d8e2f965bce21a1fc22093
+
     @Override
     public long addClient(ContentValues client) {
 
@@ -95,13 +95,13 @@ import static android.R.id.list;
     public long addCarModel(ContentValues carModel) {
 
         carModels.add((Functions.contentValuesToCarModel(carModel)));
-        return Functions.contentValuesToCarModel(carModel).getModelCode();
+        return Functions.contentValuesToCarModel(carModel).getModelCode_id();
     }
 
     @Override
     public boolean removeCarModel(long id) {
         for (CarModel item : carModels) {
-            if(item.getModelCode() == id) {
+            if(item.getModelCode_id() == id) {
                 carModels.remove(item);
                 return true;
             }
@@ -124,14 +124,14 @@ import static android.R.id.list;
     public long addBranch(ContentValues branch) {
 
         branches.add(Functions.contentValuesToBranch(branch));
-        return Functions.contentValuesToBranch(branch).getBranchNumber();
+        return Functions.contentValuesToBranch(branch).getBranchNumber_id();
     }
 
     @Override
     public boolean removeBranch(long id) {
 
         for (Branch item : branches) {
-            if(item.getBranchNumber() == id) {
+            if(item.getBranchNumber_id() == id) {
                 return true;
             }
         }

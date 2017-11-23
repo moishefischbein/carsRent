@@ -9,7 +9,7 @@ public class Client {
 
     String lastName;
     String firstName;
-    long id;
+    int id;
     String phoneNumber;
     String email;
     long creditCardNumber;
@@ -18,7 +18,7 @@ public class Client {
     public Client() {
     }
 
-    public Client(String lastName, String firstName, long id, String phoneNumber, String email, long creditCardNumber) {
+    public Client(String lastName, String firstName, int id, String phoneNumber, String email, long creditCardNumber) {
         this.lastName = lastName;
         this.firstName = firstName;
         this.id = id;
@@ -43,11 +43,11 @@ public class Client {
         firstName = firstName;
     }
 
-    public long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(long ID) {
+    public void setId(int ID) {
         this.id = ID;
     }
 

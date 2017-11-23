@@ -42,7 +42,29 @@ public class Functions {
         public static final String ISAUTOMATIC = "isAutomatic";
         public static final String SEATING = "seating";
     }
-    public static ContentValues ClientToContentValues(Client client) {
+
+    public static class CarConst {
+        public static final String CAR_NUMBER = "_id";
+        public static final String MODEL = "model";
+        public static final String KILOMETERS_TRAVELED = "kilometersTraveled";
+        public static final String FIXED_BRANCH = "fixedBranch";
+    }
+
+    public static class CarReserveConst {
+        public static final String RESERVE_NUMBER = "_id";
+        public static final String CLIENT_NUMBER = "clientNumber";
+        public static final String IS_OPENED = "isOpened";
+        public static final String RENT_BEGGINING_DATE = "rentBegginingDate";
+        public static final String RENT_END_DATE = "rentEndDate";
+        public static final String START_KILOMETERS = "startKilometers";
+        public static final String END_KILOMETERS = "endKilometers";
+        public static final String IS_FUELED = "isFueled";
+        public static final String LITERS_FUELED = "litersFueled";
+        public static final String TOTAL_TO_PAY = "totalToPay";
+        public static final String CAR_NUMBER = "carNumber";
+    }
+
+        public static ContentValues ClientToContentValues(Client client) {
 
         ContentValues contentValues = new ContentValues();
         contentValues.put(Functions.ClientConst.ID, client.getId());
@@ -54,37 +76,44 @@ public class Functions {
 
         return contentValues;
     }
+
+
+    public static Client contentValuesToClient(ContentValues contentValues) {
+        Client client = new Client();
+        client.setId(contentValues.getAsInteger(ClientConst.ID));
+        client.setFirstName(contentValues.getAsString(ClientConst.FIRSTNAME));
+        client.setLastName(contentValues.getAsString(ClientConst.LASTTNAME));
+        client.setPhoneNumber(contentValues.getAsString(ClientConst.PHONE));
+        client.setEmail(contentValues.getAsString(ClientConst.EMAIL));
+        client.setCreditCardNumber(contentValues.getAsInteger(ClientConst.CREDITCARDNUMBER));
+
+        return client;
+    }
+
     public static ContentValues BranchToContentValues(Branch branch) {
 
         ContentValues contentValues = new ContentValues();
-        contentValues.put(BranchConst.BRANCHNUMBER, branch.getBranchNumber());
+        contentValues.put(BranchConst.BRANCHNUMBER, branch.getBranchNumber_id());
         contentValues.put(BranchConst.ADESSNUMBER, branch.getAdressNumber());
         contentValues.put(BranchConst.CITY, branch.getCity());
         contentValues.put(BranchConst.NUMBEROFPARKINGAVAILABLE, branch.getNumberOfParkingAvailable());
         contentValues.put(BranchConst.STREET, branch.getStreet());
 
-<<<<<<< HEAD
-    public static class CarConst {
-        public static final String CAR_NUMBER = "_id";
-        public static final String MODEL = "model";
-        public static final String KILOMETERS_TRAVELED = "kilometersTraveled";
-        public static final String FIXED_BRANCH = "fixedBranch";
-        }
-
-    public static class CarReserveConst {
-        public static final String RESERVE_NUMBER  = "_id";
-        public static final String CLIENT_NUMBER = "clientNumber";
-        public static final String IS_OPENED = "isOpened";
-        public static final String RENT_BEGGINING_DATE = "rentBegginingDate";
-        public static final String RENT_END_DATE = "rentEndDate";
-        public static final String START_KILOMETERS = "startKilometers";
-        public static final String END_KILOMETERS = "endKilometers";
-        public static final String IS_FUELED = "isFueled";
-        public static final String LITERS_FUELED = "litersFueled";
-        public static final String TOTAL_TO_PAY = "totalToPay";
-        public static final String CAR_NUMBER = "carNumber";
         return contentValues;
     }
+
+    public static Branch contentValuesToBranch(ContentValues contentValues) {
+        Branch branch = new Branch();
+        branch.setBranchNumber_id(contentValues.getAsInteger(BranchConst.BRANCHNUMBER));
+        branch.setStreet(contentValues.getAsString(BranchConst.STREET));
+        branch.setCity(contentValues.getAsString(BranchConst.CITY));
+        branch.setAdressNumber(contentValues.getAsString(BranchConst.ADESSNUMBER));
+        branch.setNumberOfParkingAvailable(contentValues.getAsInteger(BranchConst.NUMBEROFPARKINGAVAILABLE));
+
+        return branch;
+    }
+
+
     public static ContentValues CarModelToContentValues(CarModel carModel) {
 
         ContentValues contentValues = new ContentValues();
@@ -98,31 +127,17 @@ public class Functions {
         return contentValues;
     }
 
-    public static ContentValues ClientToContentValues(Client client) {
+    public static CarModel contentValuesToCarModel(ContentValues contentValues) {
+        CarModel carModel = new CarModel();
+        carModel.setAutomatic(contentValues.getAsBoolean(CarModelConst.ISAUTOMATIC));
+        carModel.setNumberOfSeats(contentValues.getAsInteger(CarModelConst.SEATING));
+        carModel.setMotorVolume(contentValues.getAsInteger(CarModelConst.ENGINE_VOLUME));
+        carModel.setModelName(contentValues.getAsString(CarModelConst.MODEL_NAME));
+        carModel.setCompanyName(contentValues.getAsString(CarModelConst.COMPANY_NAME));
+        carModel.setModelCode(contentValues.getAsInteger(CarModelConst.MODEL_ID));
 
-        ContentValues contentValues = new ContentValues();
-        contentValues.put(Functions.ClientConst.ID, client.getId());
-        contentValues.put(Functions.ClientConst.FIRSTNAME, client.getFirstName());
-        contentValues.put(Functions.ClientConst.LASTTNAME, client.getLastName());
-        contentValues.put(Functions.ClientConst.PHONE, client.getPhoneNumber());
-        contentValues.put(Functions.ClientConst.EMAIL, client.getEmail());
-        contentValues.put(Functions.ClientConst.CREDITCARDNUMBER, client.getCreditCardNumber());
-
-        return contentValues;
+        return carModel;
     }
-
-    public static Client contentValuesToClient(ContentValues contentValues) {
-        Client client = new Client();
-        client.setId(contentValues.getAsInteger(ClientConst.ID));
-        client.setFirstName(contentValues.getAsString(ClientConst.FIRSTNAME));
-        client.setLastName(contentValues.getAsString(ClientConst.LASTTNAME));
-        client.setPhoneNumber(contentValues.getAsString(ClientConst.PHONE));
-        client.setEmail(contentValues.getAsString(ClientConst.EMAIL));
-        client.setCreditCardNumber(contentValues.getAsInteger(ClientConst.CREDITCARDNUMBER));
-
-        return client;
-    }
-<<<<<<< HEAD
 
     public static Car contentValuesToCar(ContentValues car){
         Car theCar = new Car();
@@ -162,6 +177,7 @@ public class Functions {
 
         return theCarReserve;
     }
+
     public static ContentValues carReserveToContentValues(CarReserve carReserve) {
         ContentValues contentValues = new ContentValues();
 
@@ -179,30 +195,5 @@ public class Functions {
 
         return contentValues;
     }
-
-=======
-        public static Branch contentValuesToBranch(ContentValues contentValues) {
-            Branch branch = new Branch();
-            branch.setBranchNumber(contentValues.getAsInteger(BranchConst.BRANCHNUMBER));
-            branch.setStreet(contentValues.getAsString(BranchConst.STREET));
-            branch.setCity(contentValues.getAsString(BranchConst.CITY));
-            branch.setAdressNumber(contentValues.getAsString(BranchConst.ADESSNUMBER));
-            branch.setNumberOfParkingAvailable(contentValues.getAsInteger(BranchConst.NUMBEROFPARKINGAVAILABLE));
-
-            return branch;
-        }
-
-    public static CarModel contentValuesToCarModel(ContentValues contentValues) {
-        CarModel carModel = new CarModel();
-        carModel.setAutomatic(contentValues.getAsBoolean(CarModelConst.ISAUTOMATIC));
-        carModel.setNumberOfSeats(contentValues.getAsInteger(CarModelConst.SEATING));
-        carModel.setMotorVolume(contentValues.getAsInteger(CarModelConst.ENGINE_VOLUME));
-        carModel.setModelName(contentValues.getAsString(CarModelConst.MODEL_NAME));
-        carModel.setCompanyName(contentValues.getAsString(CarModelConst.COMPANY_NAME));
-        carModel.setModelCode(contentValues.getAsInteger(CarModelConst.MODEL_ID));
-
-        return carModel;
-    }
->>>>>>> a92f3391fc274eff93d8e2f965bce21a1fc22093
 
 }
