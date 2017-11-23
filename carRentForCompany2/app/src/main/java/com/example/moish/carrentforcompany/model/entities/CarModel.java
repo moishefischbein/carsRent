@@ -6,19 +6,19 @@ package com.example.moish.carrentforcompany.model.entities;
 
 public class CarModel {
 
-    int modelCode;
+    int modelCode_id;
     String companyName;
     String modelName;
     int motorVolume;
     Boolean isAutomatic;
     int numberOfSeats;
 
-    public int getModelCode() {
-        return modelCode;
+    public int getModelCode_id() {
+        return modelCode_id;
     }
 
     public void setModelode(int modelCode) {
-        this.modelCode = modelCode;
+        this.modelCode_id = modelCode;
     }
 
     public String getCompanyName() {
@@ -65,9 +65,9 @@ public class CarModel {
 
     }
 
-    public CarModel(int modelCode, String companyName, String modelName,
+    public CarModel(int modelCode_id, String companyName, String modelName,
                     int motorVolume, Boolean isAutomatic, int numberOfSeats) {
-        this.modelCode = modelCode;
+        this.modelCode_id = modelCode_id;
         this.companyName = companyName;
         this.modelName = modelName;
         this.motorVolume = motorVolume;

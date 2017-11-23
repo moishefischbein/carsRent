@@ -3,7 +3,9 @@ package com.example.moish.carrentforcompany.model.backend;
 import android.content.ContentValues;
 
 import com.example.moish.carrentforcompany.model.entities.Branch;
+import com.example.moish.carrentforcompany.model.entities.Car;
 import com.example.moish.carrentforcompany.model.entities.CarModel;
+import com.example.moish.carrentforcompany.model.entities.CarReserve;
 import com.example.moish.carrentforcompany.model.entities.Client;
 
 import java.util.List;
@@ -27,5 +29,16 @@ public interface DB_manager {
     boolean removeBranch(long id);
     boolean updateBranch(long id, ContentValues values);
     List<Branch> getBranchs();
+
+    long addCar(ContentValues car);
+    boolean removeCar(long id);
+    boolean updateCar(long id, ContentValues values);
+    List<Car> getCar();
+
+    long addCarReserve(ContentValues carReserve);
+    boolean removeCarReserve(int id);
+    boolean updateCarReserve(long id, ContentValues values);
+    List<CarReserve> getCarReserve();
+
 
 }

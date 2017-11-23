@@ -9,17 +9,16 @@ public class Client {
 
     String lastName;
     String firstName;
-    
-    int id;
+    long id;
     String phoneNumber;
     String email;
-    int creditCardNumber;
+    long creditCardNumber;
 
 
     public Client() {
     }
 
-    public Client(String lastName, String firstName, int id, String phoneNumber, String email, int creditCardNumber) {
+    public Client(String lastName, String firstName, long id, String phoneNumber, String email, long creditCardNumber) {
         this.lastName = lastName;
         this.firstName = firstName;
         this.id = id;
@@ -44,11 +43,11 @@ public class Client {
         firstName = firstName;
     }
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int ID) {
+    public void setId(long ID) {
         this.id = ID;
     }
 
@@ -68,11 +67,11 @@ public class Client {
         this.email = email;
     }
 
-    public int getCreditCardNumber() {
+    public long getCreditCardNumber() {
         return creditCardNumber;
     }
 
-    public void setCreditCardNumber(int creditCardNumber) {
+    public void setCreditCardNumber(long creditCardNumber) {
         this.creditCardNumber = creditCardNumber;
     }
 }

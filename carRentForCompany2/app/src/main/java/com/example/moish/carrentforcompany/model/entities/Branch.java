@@ -7,7 +7,7 @@ public class Branch {
 
     String City, Street, AdressNumber;
     int NumberOfParkingAvailable;
-    int BranchNumber;
+    int BranchNumber_id;
 
     public String getCity() {
         return City;
@@ -41,22 +41,22 @@ public class Branch {
         NumberOfParkingAvailable = numberOfParkingAvailable;
     }
 
-    public int getBranchNumber() {
-        return BranchNumber;
+    public int getBranchNumber_id() {
+        return BranchNumber_id;
     }
 
-    public void setBranchNumber(int branchNumber) {
-        BranchNumber = branchNumber;
+    public void setBranchNumber_id(int branchNumber_id) {
+        BranchNumber_id = branchNumber_id;
     }
 
     public Branch() {
     }
 
-    public Branch(String city, String street, String adressNumber, int numberOfParkingAvailable, int branchNumber) {
+    public Branch(String city, String street, String adressNumber, int numberOfParkingAvailable, int branchNumberId) {
         City = city;
         Street = street;
         AdressNumber = adressNumber;
         NumberOfParkingAvailable = numberOfParkingAvailable;
-        BranchNumber = branchNumber;
+        BranchNumber_id = branchNumberId;
     }
 }

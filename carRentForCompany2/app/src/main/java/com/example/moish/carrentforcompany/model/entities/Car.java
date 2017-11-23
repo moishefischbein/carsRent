@@ -8,20 +8,20 @@ public class Car {
     int fixedBranch;
     int model;
     double kilometersTraveled;
-    int carNumber;
+    int carNumber_id;
 
-    public Car(int fixedBranch, int model, double kilometersTraveled, int carNumber) {
+    public Car(int fixedBranch, int model, double kilometersTraveled, int carNumber_id) {
         this.fixedBranch = fixedBranch;
         this.model = model;
         this.kilometersTraveled = kilometersTraveled;
-        this.carNumber = carNumber;
+        this.carNumber_id = carNumber_id;
     }
 
     public Car() {
         fixedBranch = 0;
         model = 0;
         kilometersTraveled = 0;
-        carNumber = 0;
+        carNumber_id = 0;
     }
 
     public int getFixedBranch() {
@@ -48,11 +48,11 @@ public class Car {
         this.kilometersTraveled = kilometersTraveled;
     }
 
-    public int getCarNumber() {
-        return carNumber;
+    public int getCarNumber_id() {
+        return carNumber_id;
     }
 
-    public void setCarNumber(int carNumber) {
-        this.carNumber = carNumber;
+    public void setCarNumber_id(int carNumber_id) {
+        this.carNumber_id = carNumber_id;
     }
 }

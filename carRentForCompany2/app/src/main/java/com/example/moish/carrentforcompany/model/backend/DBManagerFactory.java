@@ -14,4 +14,7 @@ public class DBManagerFactory {
             manager = new List_DBManager(); //MySQL_DBManager();
         return manager;
     }
+
+    private DBManagerFactory() {
+    }
 }
