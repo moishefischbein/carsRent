@@ -30,7 +30,7 @@
             android:layout_height="wrap_content"
             android:text="Car Model" />
         <Button
-            android:id="@+id/SCarButton"
+            android:id="@+id/ReserveCarButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Car Reserve" />

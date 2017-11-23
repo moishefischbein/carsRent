@@ -20,7 +20,7 @@ public class MainActivity extends Activity implements View.OnClickListener{
     private Button ClientButton;
     private Button CarButton;
     private Button CarModelButton;
-    private Button SCarButton;
+    private Button ReserveCarButton;
     private Button BranchButton;
 
     /**
@@ -33,13 +33,13 @@ public class MainActivity extends Activity implements View.OnClickListener{
         ClientButton = (Button)findViewById( R.id.ClientButton );
         CarButton = (Button)findViewById( R.id.CarButton );
         CarModelButton = (Button)findViewById( R.id.CarModelButton );
-        SCarButton = (Button)findViewById( R.id.SCarButton );
+        ReserveCarButton = (Button)findViewById( R.id.ReserveCarButton );
         BranchButton = (Button)findViewById( R.id.BranchButton );
 
         ClientButton.setOnClickListener( this );
         CarButton.setOnClickListener( this );
         CarModelButton.setOnClickListener( this );
-        SCarButton.setOnClickListener( this );
+        ReserveCarButton.setOnClickListener( this );
         BranchButton.setOnClickListener( this );
     }
 
@@ -57,7 +57,7 @@ public class MainActivity extends Activity implements View.OnClickListener{
             // Handle clicks for CarButton
         } else if ( v == CarModelButton ) {
             // Handle clicks for CarModelButton
-        } else if ( v == SCarButton ) {
+        } else if ( v == ReserveCarButton ) {
             // Handle clicks for SCarButton
         } else if ( v == BranchButton ) {
             // Handle clicks for BranchButton
