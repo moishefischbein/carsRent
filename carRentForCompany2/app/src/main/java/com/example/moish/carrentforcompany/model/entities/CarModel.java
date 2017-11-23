@@ -17,8 +17,13 @@ public class CarModel {
         return modelCode_id;
     }
 
+<<<<<<< HEAD
     public void setModelode(int modelCode) {
         this.modelCode_id = modelCode;
+=======
+    public void setModelCode(int modelCode) {
+        this.modelCode = modelCode;
+>>>>>>> a92f3391fc274eff93d8e2f965bce21a1fc22093
     }
 
     public String getCompanyName() {

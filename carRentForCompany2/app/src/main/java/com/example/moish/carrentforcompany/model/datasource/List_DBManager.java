@@ -11,7 +11,10 @@ import com.example.moish.carrentforcompany.model.entities.CarReserve;
 import com.example.moish.carrentforcompany.model.entities.Client;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
+
+import static android.R.id.list;
 
 /**
  * Created by moish on 16/11/2017.
@@ -34,14 +37,46 @@ import java.util.List;
         cars = new ArrayList<>();
     }
 
+<<<<<<< HEAD
     //----------------------Client Functions-----------------//
+=======
+    public boolean isThisClientExist(long id)
+    {
+
+        //if exist this Client in the List of clients
+        for (Iterator<Client> iter = clients.iterator(); iter.hasNext(); ) {
+            Client element = iter.next();
+            if(element.getId()== id);
+
+            return true;
+        }
+        return false;
+
+    }
+>>>>>>> a92f3391fc274eff93d8e2f965bce21a1fc22093
     @Override
     public long addClient(ContentValues client) {
-        return 0;
+
+        boolean isExistThisClient = isThisClientExist(Functions.contentValuesToClient(client).getId());
+        if(isExistThisClient == false)
+        {
+          clients.add(Functions.contentValuesToClient(client));
+          return Functions.contentValuesToClient(client).getId();
+        }
+     return 0;
     }
+
 
     @Override
     public boolean removeClient(long id) {
+
+        for (Iterator<Client> iter = clients.iterator(); iter.hasNext(); ) {
+            Client element = iter.next();
+            if(element.getId()== id);
+
+            iter.remove();
+            return true;
+        }
         return false;
     }
 
@@ -52,17 +87,25 @@ import java.util.List;
 
     @Override
     public List<Client> getClients() {
-        return null;
+        return clients;
     }
 
     //--------------------Car Model Functions------------------//
     @Override
     public long addCarModel(ContentValues carModel) {
-        return 0;
+
+        carModels.add((Functions.contentValuesToCarModel(carModel)));
+        return Functions.contentValuesToCarModel(carModel).getModelCode();
     }
 
     @Override
     public boolean removeCarModel(long id) {
+        for (CarModel item : carModels) {
+            if(item.getModelCode() == id) {
+                carModels.remove(item);
+                return true;
+            }
+        }
         return false;
     }
 
@@ -73,17 +116,25 @@ import java.util.List;
 
     @Override
     public List<CarModel> getCarModels() {
-        return null;
+        return carModels;
     }
 
     //-----------------------Branch Function-----------------//
     @Override
     public long addBranch(ContentValues branch) {
-        return 0;
+
+        branches.add(Functions.contentValuesToBranch(branch));
+        return Functions.contentValuesToBranch(branch).getBranchNumber();
     }
 
     @Override
     public boolean removeBranch(long id) {
+
+        for (Branch item : branches) {
+            if(item.getBranchNumber() == id) {
+                return true;
+            }
+        }
         return false;
     }
 
@@ -94,7 +145,7 @@ import java.util.List;
 
     @Override
     public List<Branch> getBranchs() {
-        return null;
+      return branches;
     }
 
     //---------------------------Car Function------------------//
