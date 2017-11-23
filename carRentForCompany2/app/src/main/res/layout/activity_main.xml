@@ -15,36 +15,32 @@
         tools:layout_editor_absoluteX="8dp"
         tools:ignore="MissingConstraints">
         <Button
-            android:id="@+id/addStudentButton"
+            android:id="@+id/ClientButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Add Student" />
+            android:text="Client" />
         <Button
-            android:id="@+id/addLecturerButton"
+            android:id="@+id/CarButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Add Lecturer" />
+            android:text="Car" />
         <Button
-            android:id="@+id/addCourseButton"
+            android:id="@+id/CarModelButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Add Course" />
+            android:text="Car Model" />
         <Button
-            android:id="@+id/addStudentCourseButton"
+            android:id="@+id/SCarButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Add StudentCourse" />
+            android:text="Car Reserve" />
         <Button
-            android:id="@+id/showStudentListButton"
+            android:id="@+id/BranchButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
-            android:text="Show Student List" />
-        <Button
-            android:id="@+id/showCourseListButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Show Course List" />
+            android:text="Branch" />
+
+
     </LinearLayout>
 
 
