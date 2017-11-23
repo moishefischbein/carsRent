@@ -8,7 +8,7 @@ import android.widget.Button;
 
 import com.example.moish.carrentforcompany.R;
 
-public class carActivity extends Activity implements View.OnClickListener{
+public class CarActivity extends Activity implements View.OnClickListener{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

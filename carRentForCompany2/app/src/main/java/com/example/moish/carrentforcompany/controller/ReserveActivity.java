@@ -7,7 +7,7 @@ import android.widget.Button;
 
 import com.example.moish.carrentforcompany.R;
 
-public class reserveActivity extends Activity implements View.OnClickListener{
+public class ReserveActivity extends Activity implements View.OnClickListener{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
