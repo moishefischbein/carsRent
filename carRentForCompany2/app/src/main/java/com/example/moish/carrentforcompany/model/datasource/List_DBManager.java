@@ -31,14 +31,13 @@ import static android.R.id.list;
         branches = new ArrayList<>();
     }
 
-    public boolean isThisClientExist(ContentValues contentValueClient)
+    public boolean isThisClientExist(long id)
     {
-        //receive the Client from clientContentValues
-        Client client = Functions.contentValuesToClient(contentValueClient);
+
         //if exist this Client in the List of clients
         for (Iterator<Client> iter = clients.iterator(); iter.hasNext(); ) {
             Client element = iter.next();
-            if(element.getId()==client.getId());
+            if(element.getId()== id);
 
             return true;
         }
@@ -48,13 +47,26 @@ import static android.R.id.list;
     @Override
     public long addClient(ContentValues client) {
 
-        clients.add(Functions.contentValuesToClient(client));
-        return Functions.contentValuesToClient(client).getId();
+        boolean isExistThisClient = isThisClientExist(Functions.contentValuesToClient(client).getId());
+        if(isExistThisClient == false)
+        {
+          clients.add(Functions.contentValuesToClient(client));
+          return Functions.contentValuesToClient(client).getId();
+        }
+     return 0;
     }
+
 
     @Override
     public boolean removeClient(long id) {
 
+        for (Iterator<Client> iter = clients.iterator(); iter.hasNext(); ) {
+            Client element = iter.next();
+            if(element.getId()== id);
+
+            iter.remove();
+            return true;
+        }
         return false;
     }
 
@@ -65,7 +77,7 @@ import static android.R.id.list;
 
     @Override
     public List<Client> getClients() {
-        return null;
+        return clients;
     }
 
     @Override
