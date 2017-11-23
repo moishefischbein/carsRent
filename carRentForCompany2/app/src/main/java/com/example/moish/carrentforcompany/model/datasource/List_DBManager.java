@@ -5,6 +5,7 @@ import android.content.ContentValues;
 import com.example.moish.carrentforcompany.model.backend.DB_manager;
 import com.example.moish.carrentforcompany.model.backend.Functions;
 import com.example.moish.carrentforcompany.model.entities.Branch;
+import com.example.moish.carrentforcompany.model.entities.Car;
 import com.example.moish.carrentforcompany.model.entities.CarModel;
 import com.example.moish.carrentforcompany.model.entities.Client;
 
@@ -82,11 +83,19 @@ import static android.R.id.list;
 
     @Override
     public long addCarModel(ContentValues carModel) {
-        return 0;
+
+        carModels.add((Functions.contentValuesToCarModel(carModel)));
+        return Functions.contentValuesToCarModel(carModel).getModelCode();
     }
 
     @Override
     public boolean removeCarModel(long id) {
+        for (CarModel item : carModels) {
+            if(item.getModelCode() == id) {
+                carModels.remove(item);
+                return true;
+            }
+        }
         return false;
     }
 
@@ -97,16 +106,24 @@ import static android.R.id.list;
 
     @Override
     public List<CarModel> getCarModels() {
-        return null;
+        return carModels;
     }
 
     @Override
     public long addBranch(ContentValues branch) {
-        return 0;
+
+        branches.add(Functions.contentValuesToBranch(branch));
+        return Functions.contentValuesToBranch(branch).getBranchNumber();
     }
 
     @Override
     public boolean removeBranch(long id) {
+
+        for (Branch item : branches) {
+            if(item.getBranchNumber() == id) {
+                return true;
+            }
+        }
         return false;
     }
 
@@ -117,7 +134,7 @@ import static android.R.id.list;
 
     @Override
     public List<Branch> getBranchs() {
-        return null;
+      return branches;
     }
 }
 
