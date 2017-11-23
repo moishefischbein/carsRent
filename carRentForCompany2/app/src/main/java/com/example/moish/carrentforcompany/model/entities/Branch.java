@@ -59,4 +59,6 @@ public class Branch {
         NumberOfParkingAvailable = numberOfParkingAvailable;
         BranchNumber_id = branchNumberId;
     }
+
+
 }
