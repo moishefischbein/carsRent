@@ -4,26 +4,27 @@
     android:layout_height="match_parent">
 
 
+
     <Button
-        android:id="@+id/AddClientButton"
+        android:id="@+id/AddBranchtButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Add Client" />
+        android:text="Add Branch" />
     <Button
-        android:id="@+id/RemoveClientButton"
+        android:id="@+id/RemoveBranchButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Remove Client" />
+        android:text="Remove Branch" />
     <Button
-        android:id="@+id/UpdateClientButton"
+        android:id="@+id/UpdateBranchButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Update Client" />
+        android:text="Update Branch" />
     <Button
-        android:id="@+id/ShowCarButton"
+        android:id="@+id/ShowBranchButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Show Client List" />
+        android:text="Show Branch List" />
 
 
 </LinearLayout>

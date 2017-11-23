@@ -4,26 +4,26 @@
     android:layout_height="match_parent">
 
 
-    <Button
-        android:id="@+id/AddClientButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Add Client" />
-    <Button
-        android:id="@+id/RemoveClientButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Remove Client" />
-    <Button
-        android:id="@+id/UpdateClientButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Update Client" />
-    <Button
-        android:id="@+id/ShowCarButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Show Client List" />
 
+    <Button
+        android:id="@+id/AddCarModeltButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Add Car Model" />
+    <Button
+        android:id="@+id/RemoveCarModelButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Remove Car Model" />
+    <Button
+        android:id="@+id/UpdateCarModelButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Update Car Model" />
+    <Button
+        android:id="@+id/ShowCarModelButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Show Car Model List" />
 
 </LinearLayout>
