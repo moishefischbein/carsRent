@@ -1,6 +1,7 @@
 package com.example.moish.carrentforcompany.controller;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -47,7 +48,8 @@ public class ClientActivity extends Activity implements View.OnClickListener {
     @Override
     public void onClick(View v) {
         if ( v == AddClientButton ) {
-            // Handle clicks for AddClientButton
+            Intent intent = new Intent(this,AddClientActivity.class);
+            startActivity(intent);
         } else if ( v == RemoveClientButton ) {
             // Handle clicks for RemoveClientButton
         } else if ( v == UpdateClientButton ) {

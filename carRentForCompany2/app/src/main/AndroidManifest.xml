@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    android:android.intent.category.DEFAULT=
     package="com.example.moish.carrentforcompany">
 
     <application
@@ -18,9 +19,13 @@
         </activity>
         <activity android:name=".controller.BranchActivity" />
         <activity android:name=".controller.CarModelActivity" />
-        <activity android:name=".controller.ClientActivity"/>
+        <activity android:name=".controller.ClientActivity" />
         <activity android:name=".controller.ReserveActivity" />
         <activity android:name=".controller.CarActivity" />
+        <activity android:name=".controller.AddClientActivity"></activity>
+        <activity android:name=".controller.AddBranch">
+
+        </activity>
     </application>
 
 </manifest>

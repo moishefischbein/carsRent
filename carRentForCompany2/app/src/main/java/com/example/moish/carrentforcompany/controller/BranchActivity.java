@@ -15,8 +15,8 @@ public class BranchActivity extends Activity implements View.OnClickListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_branch);
     }
-    private Button AddBranchtButton;
     private Button RemoveBranchButton;
+    private Button AddBranchtButton;
     private Button UpdateBranchButton;
     private Button ShowBranchButton;
 

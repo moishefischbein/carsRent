@@ -1,4 +1,10 @@
 <resources>
     <string name="app_name">carRentForCompany</string>
     <string name="title_activity_reserve">reserveActivity</string>
+
+    <string name="id">id</string>
+    <string name="name">name</string>
+    <string name="phone">phone</string>
+    <string name="seniority">Seniority:</string>
+    <string name="add_lecturer">Add Lecturer</string>
 </resources>
