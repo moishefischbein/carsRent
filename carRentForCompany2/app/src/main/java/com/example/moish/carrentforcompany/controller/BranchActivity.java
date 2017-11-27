@@ -14,6 +14,7 @@ public class BranchActivity extends Activity implements View.OnClickListener {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_branch);
+        findViews();
     }
     private Button RemoveBranchButton;
     private Button AddBranchtButton;
@@ -23,8 +24,6 @@ public class BranchActivity extends Activity implements View.OnClickListener {
     /**
      * Find the Views in the layout<br />
      * <br />
-     * Auto-created on 2017-11-23 19:39:41 by Android Layout Finder
-     * (http://www.buzzingandroid.com/tools/android-layout-finder)
      */
     private void findViews() {
         AddBranchtButton = (Button)findViewById( R.id.AddBranchtButton );
@@ -41,8 +40,6 @@ public class BranchActivity extends Activity implements View.OnClickListener {
     /**
      * Handle button click events<br />
      * <br />
-     * Auto-created on 2017-11-23 19:39:41 by Android Layout Finder
-     * (http://www.buzzingandroid.com/tools/android-layout-finder)
      */
     @Override
     public void onClick(View v) {

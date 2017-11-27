@@ -15,18 +15,13 @@ public class ClientActivity extends Activity implements View.OnClickListener {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_client);
+        findViews();
     }
     private Button AddClientButton;
     private Button RemoveClientButton;
     private Button UpdateClientButton;
     private Button ShowCarButton;
 
-    /**
-     * Find the Views in the layout<br />
-     * <br />
-     * Auto-created on 2017-11-23 19:44:29 by Android Layout Finder
-     * (http://www.buzzingandroid.com/tools/android-layout-finder)
-     */
     private void findViews() {
         AddClientButton = (Button)findViewById( R.id.AddClientButton );
         RemoveClientButton = (Button)findViewById( R.id.RemoveClientButton );
@@ -42,9 +37,7 @@ public class ClientActivity extends Activity implements View.OnClickListener {
     /**
      * Handle button click events<br />
      * <br />
-     * Auto-created on 2017-11-23 19:44:29 by Android Layout Finder
-     * (http://www.buzzingandroid.com/tools/android-layout-finder)
-     */
+    **/
     @Override
     public void onClick(View v) {
         if ( v == AddClientButton ) {
