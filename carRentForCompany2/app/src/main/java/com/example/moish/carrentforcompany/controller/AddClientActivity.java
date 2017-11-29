@@ -15,40 +15,46 @@ public class AddClientActivity extends Activity implements View.OnClickListener 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_client);
+        findViews();
     }
     private EditText IdEditText;
-    private EditText NameEditText;
+    private EditText FirstNameEditText;
+    private EditText LastNameEditText;
+    private EditText EmailEditText;
     private EditText PhoneEditText;
-    private EditText SeniorityEditText;
-    private Button addLecturerButton;
+    private EditText creditCardNumberEditText;
+    private Button addClientButton;
 
     /**
      * Find the Views in the layout<br />
      * <br />
-     * Auto-created on 2017-11-24 11:54:56 by Android Layout Finder
+     * Auto-created on 2017-11-29 09:42:45 by Android Layout Finder
      * (http://www.buzzingandroid.com/tools/android-layout-finder)
      */
     private void findViews() {
         IdEditText = (EditText)findViewById( R.id.IdEditText );
-        NameEditText = (EditText)findViewById( R.id.NameEditText );
+        FirstNameEditText = (EditText)findViewById( R.id.FirstNameEditText );
+        LastNameEditText = (EditText)findViewById( R.id.LastNameEditText );
+        EmailEditText = (EditText)findViewById( R.id.EmailEditText );
         PhoneEditText = (EditText)findViewById( R.id.PhoneEditText );
-        SeniorityEditText = (EditText)findViewById( R.id.SeniorityEditText );
-        addLecturerButton = (Button)findViewById( R.id.addLecturerButton );
+        creditCardNumberEditText = (EditText)findViewById( R.id.creditCardNumberEditText );
+        addClientButton = (Button)findViewById( R.id.addClientButton );
 
-        addLecturerButton.setOnClickListener( this );
+        addClientButton.setOnClickListener( this );
     }
 
     /**
      * Handle button click events<br />
      * <br />
-     * Auto-created on 2017-11-24 11:54:56 by Android Layout Finder
+     * Auto-created on 2017-11-29 09:42:45 by Android Layout Finder
      * (http://www.buzzingandroid.com/tools/android-layout-finder)
      */
     @Override
     public void onClick(View v) {
-        if ( v == addLecturerButton ) {
-            // Handle clicks for addLecturerButton
+        if ( v == addClientButton ) {
+            // Handle clicks for addClientButton
         }
     }
+
 
 }

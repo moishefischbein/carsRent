@@ -17,12 +17,28 @@
 
 
         <EditText
-            android:id="@+id/NameEditText"
+            android:id="@+id/FirstNameEditText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:hint="@string/name"
+            android:hint="@string/first_name"
             android:inputType="textPersonName" />
+
+    <EditText
+    android:id="@+id/LastNameEditText"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:ems="10"
+    android:hint="@string/last_name"
+    android:inputType="textPersonName" />
+
+    <EditText
+        android:id="@+id/EmailEditText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="@string/email"
+        android:inputType="textPersonName" />
 
         <EditText
             android:id="@+id/PhoneEditText"
@@ -39,19 +55,22 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/seniority" />
+                android:text="@string/credit_card_number" />
 
             <EditText
-                android:id="@+id/SeniorityEditText"
+                android:id="@+id/creditCardNumberEditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="number" />
         </LinearLayout>
 
         <Button
-            android:id="@+id/addLecturerButton"
+            android:id="@+id/addClientButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/add_lecturer" />
+            android:text="@string/add_client" />
 
     </LinearLayout>
+
+
+

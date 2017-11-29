@@ -1,6 +1,7 @@
 package com.example.moish.carrentforcompany.controller;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -14,6 +15,7 @@ public class CarModelActivity extends Activity implements View.OnClickListener {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_car_model);
+        findViews();
     }
     private Button AddCarModeltButton;
     private Button RemoveCarModelButton;
@@ -47,7 +49,8 @@ public class CarModelActivity extends Activity implements View.OnClickListener {
     @Override
     public void onClick(View v) {
         if ( v == AddCarModeltButton ) {
-            // Handle clicks for AddCarModeltButton
+            Intent intent = new Intent(this, AddCarModelActivity.class);
+            startActivity(intent);
         } else if ( v == RemoveCarModelButton ) {
             // Handle clicks for RemoveCarModelButton
         } else if ( v == UpdateCarModelButton ) {

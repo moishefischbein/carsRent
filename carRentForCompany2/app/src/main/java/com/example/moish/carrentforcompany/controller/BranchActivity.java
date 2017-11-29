@@ -1,6 +1,7 @@
 package com.example.moish.carrentforcompany.controller;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -44,7 +45,8 @@ public class BranchActivity extends Activity implements View.OnClickListener {
     @Override
     public void onClick(View v) {
         if ( v == AddBranchtButton ) {
-            // Handle clicks for AddBranchtButton
+            Intent intent = new Intent(this, AddBranchActivity.class);
+            startActivity(intent);
         } else if ( v == RemoveBranchButton ) {
             // Handle clicks for RemoveBranchButton
         } else if ( v == UpdateBranchButton ) {

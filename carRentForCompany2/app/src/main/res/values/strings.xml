@@ -3,8 +3,29 @@
     <string name="title_activity_reserve">reserveActivity</string>
 
     <string name="id">id</string>
-    <string name="name">name</string>
+    <string name="first_name">first name</string>
+    <string name="last_name">last name</string>
     <string name="phone">phone</string>
-    <string name="seniority">Seniority:</string>
-    <string name="add_lecturer">Add Lecturer</string>
+    <string name="credit_card_number">credit card number:</string>
+    <string name="add_client">ADD CLIENT</string>
+    <string name="email">email</string>
+
+    <string name="city">city</string>
+    <string name="street">street</string>
+    <string name="adress_number">adress number</string>
+    <string name="number_ofParking_available">number of parking available</string>
+    <string name="branchNumber_id">branch number_id</string>
+    <string name="add_branch">ADD BRANCH</string>
+
+    <string name="model_code_id">model code_id</string>
+    <string name="company_name">company name</string>
+    <string name="model_name">model name</string>
+    <string name="motor_volume">motor volume</string>
+    <string name="is_automatic">is the car automatic?</string>
+    <string name="number_of_seats">number of seats</string>
+    <string name="add_car_model">ADD CAR MODEL</string>
+
+
+
 </resources>
+
