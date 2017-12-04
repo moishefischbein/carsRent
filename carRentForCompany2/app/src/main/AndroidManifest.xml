@@ -23,7 +23,9 @@
         <activity android:name=".controller.CarActivity" />
         <activity android:name=".controller.AddClientActivity" />
         <activity android:name=".controller.AddBranchActivity" />
-        <activity android:name=".controller.AddCarModelActivity"></activity>
+        <activity android:name=".controller.AddCarModelActivity" />
+        <activity android:name=".controller.AddReserveActivity" />
+        <activity android:name=".controller.AddCarActivity"></activity>
     </application>
 
 </manifest>
