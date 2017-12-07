@@ -40,7 +40,7 @@ public class Client {
     }
 
     public void setFirstName(String firstName) {
-        firstName = firstName;
+        this.firstName = firstName;
     }
 
     public int getId() {
@@ -73,5 +73,17 @@ public class Client {
 
     public void setCreditCardNumber(long creditCardNumber) {
         this.creditCardNumber = creditCardNumber;
+    }
+
+    @Override
+    public String toString() {
+        return "Client{" +
+                "lastName='" + lastName + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", id=" + id +
+                ", phoneNumber='" + phoneNumber + '\'' +
+                ", email='" + email + '\'' +
+                ", creditCardNumber=" + creditCardNumber +
+                '}';
     }
 }

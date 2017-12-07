@@ -48,7 +48,8 @@ public class ClientActivity extends Activity implements View.OnClickListener {
         } else if ( v == UpdateClientButton ) {
             // Handle clicks for UpdateClientButton
         } else if ( v == ShowCarButton ) {
-            // Handle clicks for ShowCarButton
+            Intent intent = new Intent(this,ClientListActivity.class);
+            startActivity(intent);
         }
     }
 

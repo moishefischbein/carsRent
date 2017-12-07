@@ -1,13 +1,18 @@
 package com.example.moish.carrentforcompany.controller;
 
 import android.app.Activity;
+import android.content.ContentValues;
+import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.moish.carrentforcompany.R;
+import com.example.moish.carrentforcompany.model.backend.DBManagerFactory;
+import com.example.moish.carrentforcompany.model.backend.Functions;
 
 public class AddCarModelActivity extends Activity implements View.OnClickListener {
 
@@ -51,7 +56,49 @@ public class AddCarModelActivity extends Activity implements View.OnClickListene
     @Override
     public void onClick(View v) {
         if ( v == addCarModelButton ) {
-            // Handle clicks for addCarModelButton
+            addCarModel();
+
+        }
+    }
+
+    private void addCarModel() {
+        final ContentValues contentValues = new ContentValues();
+        try {
+            int id = Integer.valueOf(this.ModelCodeIdText.getText().toString());
+            contentValues.put(Functions.CarModelConst.MODEL_ID, id);
+
+            int numberOfSeats = Integer.valueOf(this.NumberOfSeatsEditText.toString());
+            contentValues.put(Functions.CarModelConst.SEATING, numberOfSeats);
+
+            int motorVolume = Integer.valueOf(this.MotorVolumeEditText.getText().toString());
+            contentValues.put(Functions.CarModelConst.ENGINE_VOLUME,motorVolume);
+
+            contentValues.put(Functions.CarModelConst.COMPANY_NAME, this.CompanyNameText.getText().toString());
+            contentValues.put(Functions.CarModelConst.MODEL_NAME, this.ModelNameEditText.getText().toString());
+
+            boolean isAutomatic = Boolean.valueOf(this.IsAutomaticEditText.toString());
+            contentValues.put(Functions.CarModelConst.ISAUTOMATIC, isAutomatic);
+
+
+
+            new AsyncTask<Void, Void, Long>() {
+                @Override
+                protected void onPostExecute(Long idResult) {
+                    super.onPostExecute(idResult);
+                    if (idResult > 0)
+                        Toast.makeText(getBaseContext(), "insert id: " + idResult, Toast.LENGTH_LONG).show();
+                }
+
+                @Override
+                protected Long doInBackground(Void... params) {
+                    return DBManagerFactory.getManager().addCarModel(contentValues);
+                }
+            }.execute();
+
+
+
+
+        } catch (Exception e) {
         }
     }
 

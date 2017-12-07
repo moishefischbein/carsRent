@@ -1,6 +1,7 @@
 package com.example.moish.carrentforcompany.model.datasource;
 
 import android.content.ContentValues;
+import android.util.Log;
 
 import com.example.moish.carrentforcompany.model.backend.DB_manager;
 import com.example.moish.carrentforcompany.model.backend.Functions;
@@ -21,7 +22,7 @@ import static android.R.id.list;
  */
 
 
-    public class  List_DBManager implements DB_manager {
+    public class List_DBManager implements DB_manager {
 
     static List<Client> clients;
     static List<CarModel> carModels;
@@ -47,8 +48,7 @@ import static android.R.id.list;
         for (Iterator<Client> iter = clients.iterator(); iter.hasNext(); ) {
             Client element = iter.next();
             if(element.getId()== id);
-
-            return true;
+                return  true ;
         }
         return false;
 
@@ -57,14 +57,20 @@ import static android.R.id.list;
     @Override
     public long addClient(ContentValues client) {
 
-        boolean isExistThisClient = isThisClientExist(Functions.contentValuesToClient(client).getId());
+        Client c = Functions.contentValuesToClient(client);
+        Log.d("ListDBManager", c.toString());
+        clients.add(c);
+        return c.getId();}
+/*
+        boolean isExistThisClient = isThisClientExist(c.getId());
         if(isExistThisClient == false)
         {
-          clients.add(Functions.contentValuesToClient(client));
-          return Functions.contentValuesToClient(client).getId();
+          clients.add(c);
+          return c.getId();
         }
-     return 0;
+    return 0;
     }
+*/
 
 
     @Override

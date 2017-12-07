@@ -1,6 +1,7 @@
 package com.example.moish.carrentforcompany.model.backend;
 
 import android.content.ContentValues;
+import android.net.Uri;
 
 import com.example.moish.carrentforcompany.model.entities.Car;
 import com.example.moish.carrentforcompany.model.entities.Branch;
@@ -16,6 +17,12 @@ import java.util.Calendar;
 
 public class Functions {
 
+    public static final String AUTHORITY = "com.oshri.academy";
+    /**
+     * A content:// style uri to the authority for the contacts provider
+     */
+    public static final Uri AUTHORITY_URI = Uri.parse("content://" + AUTHORITY);
+
     public static class ClientConst {
         public static final String ID = "_id";
         public static final String FIRSTNAME = "firtsname";
@@ -23,6 +30,9 @@ public class Functions {
         public static final String PHONE = "phone";
         public static final String EMAIL = "email";
         public static final String CREDITCARDNUMBER = "CreditCardNumber";
+
+
+        public static final Uri CLIENT_URI = Uri.withAppendedPath(AUTHORITY_URI, "clients");
     }
 
     public static class BranchConst {

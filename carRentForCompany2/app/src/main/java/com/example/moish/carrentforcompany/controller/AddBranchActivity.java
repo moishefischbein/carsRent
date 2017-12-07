@@ -1,13 +1,18 @@
 package com.example.moish.carrentforcompany.controller;
 
 import android.app.Activity;
+import android.content.ContentValues;
+import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.moish.carrentforcompany.R;
+import com.example.moish.carrentforcompany.model.backend.DBManagerFactory;
+import com.example.moish.carrentforcompany.model.backend.Functions;
 
 public class AddBranchActivity extends Activity implements View.OnClickListener  {
 
@@ -50,7 +55,47 @@ public class AddBranchActivity extends Activity implements View.OnClickListener 
     @Override
     public void onClick(View v) {
         if ( v == addBranchButton ) {
-            // Handle clicks for addBranchButton
+            addBranch();
+        }
+    }
+
+    private void addBranch() {
+        final ContentValues contentValues = new ContentValues();
+        try {
+
+
+            int branchNumberId = Integer.valueOf(this.BranchNumberIdEditText.toString());
+            contentValues.put(Functions.BranchConst.BRANCHNUMBER, branchNumberId);
+
+            int numberOfParkingAvailable = Integer.valueOf(this.NumberOfParkingAvailableEditText.getText().toString());
+            contentValues.put(Functions.BranchConst.NUMBEROFPARKINGAVAILABLE,numberOfParkingAvailable);
+
+            contentValues.put(Functions.BranchConst.CITY, this.CitytText.getText().toString());
+            contentValues.put(Functions.BranchConst.STREET, this.StreetEditText.getText().toString());
+            contentValues.put(Functions.BranchConst.ADESSNUMBER, this.AdressNumberEditText.getText().toString());
+
+
+
+
+
+            new AsyncTask<Void, Void, Long>() {
+                @Override
+                protected void onPostExecute(Long idResult) {
+                    super.onPostExecute(idResult);
+                    if (idResult > 0)
+                        Toast.makeText(getBaseContext(), "insert id: " + idResult, Toast.LENGTH_LONG).show();
+                }
+
+                @Override
+                protected Long doInBackground(Void... params) {
+                    return DBManagerFactory.getManager().addBranch(contentValues);
+                }
+            }.execute();
+
+
+
+
+        } catch (Exception e) {
         }
     }
 
