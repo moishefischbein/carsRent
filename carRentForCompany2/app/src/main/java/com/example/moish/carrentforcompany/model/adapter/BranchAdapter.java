@@ -1,31 +1,27 @@
 package com.example.moish.carrentforcompany.model.adapter;
 
-/**
- * Created by moish on 07/12/2017.
- */
+import android.app.Activity;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.TextView;
 
-        import android.app.Activity;
-        import android.view.View;
-        import android.view.ViewGroup;
-        import android.widget.BaseAdapter;
-        import android.widget.TextView;
+import com.example.moish.carrentforcompany.R;
+import com.example.moish.carrentforcompany.model.entities.Branch;
+import com.example.moish.carrentforcompany.model.entities.Client;
 
-        import com.example.moish.carrentforcompany.model.entities.Client;
-        import com.example.moish.carrentforcompany.R;
-        import java.util.List;
-
-
+import java.util.List;
 
 /**
- * Created by Bruno on 30/11/2017.
+ * Created by moish on 09/12/2017.
  */
 
-public class ClientAdapter extends BaseAdapter {
+public class BranchAdapter extends BaseAdapter{
 
     private final List<Client> clients;
     private final Activity activity;
 
-    public ClientAdapter(List<Client> clients, Activity activity) {
+    public BranchAdapter(List<Client> clients, Activity activity) {
         this.clients = clients;
         this.activity = activity;
     }
@@ -65,10 +61,11 @@ public class ClientAdapter extends BaseAdapter {
             //ide.setText(client.getId());
 
         }catch (Exception ex){ex.toString();}
-            return v;
+        return v;
 
     }
     {
     }
 }
+
 
