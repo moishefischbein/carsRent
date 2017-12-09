@@ -87,6 +87,7 @@ public class AddClientActivity extends Activity implements View.OnClickListener{
         if ( v == addClientButton ) {
             if(isFullTheAllTexBox()== true)
             addClient();
+            else { Toast.makeText(getBaseContext(), "There is an empty field, please fill in: ", Toast.LENGTH_LONG).show();}
         }
     }
 
