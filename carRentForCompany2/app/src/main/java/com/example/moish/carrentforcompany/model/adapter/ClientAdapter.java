@@ -53,17 +53,32 @@ public class ClientAdapter extends BaseAdapter {
 
         Client client = clients.get(i);
 
-        TextView name = (TextView) v.findViewById(R.id.clientNameTextView);
-        TextView id = (TextView) v.findViewById(R.id.clientIDTextView);
-        TextView tel = (TextView) v.findViewById(R.id.clientTelephoneTextView);
-        TextView email = (TextView) v.findViewById(R.id.clientEmailTextView);
+        try {
 
-        name.setText(client.getFirstName() + " " + client.getLastName());
-        id.setText(((int)client.getId()));
-        tel.setText(client.getPhoneNumber());
-        email.setText(client.getEmail());
 
-        return v;
+       /*     TextView name = (TextView) v.findViewById(R.id.clientNameTextView);
+            TextView id = (TextView) v.findViewById(R.id.clientIDTextView);
+            TextView tel = (TextView) v.findViewById(R.id.clientTelephoneTextView);
+            TextView email = (TextView) v.findViewById(R.id.clientEmailTextView);
+
+            name.setText(client.getFirstName() + " " + client.getLastName());
+            id.setText(client.getId());
+
+            tel.setText(client.getPhoneNumber());
+            email.setText(client.getEmail());*/
+
+            TextView ide = (TextView) v.findViewById(R.id.itemId);
+            TextView name = (TextView) v.findViewById(R.id.itemName);
+
+            name.setText(client.getFirstName() + " " + client.getLastName());
+            ide.setText(Integer.toString(client.getId()));
+            //ide.setText(client.getId());
+
+        }catch (Exception ex){ex.toString();}
+            return v;
+
+    }
+    {
     }
 }
 
