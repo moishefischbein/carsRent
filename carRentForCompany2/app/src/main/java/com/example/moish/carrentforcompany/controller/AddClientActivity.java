@@ -85,6 +85,7 @@ public class AddClientActivity extends Activity implements View.OnClickListener{
     @Override
     public void onClick(View v) {
         if ( v == addClientButton ) {
+            if(isFullTheAllTexBox()== true)
             addClient();
         }
     }
@@ -102,4 +103,18 @@ public class AddClientActivity extends Activity implements View.OnClickListener{
         }
     }
 
+
+    boolean isFullTheAllTexBox(){
+       String LN = lastNameEditText.getText().toString();
+        String FN = firstNameEditText.getText().toString();
+        String CI = clientIdEditText.getText().toString();
+        String TL = telephoneEditText.getText().toString();
+        String EM = emailEditText.getText().toString();
+        String CC = creditCardEditText.getText().toString();
+        if(LN.isEmpty()|| FN.isEmpty() || CI.isEmpty() || TL.isEmpty() || EM.isEmpty() || CC.isEmpty()){
+            return false;
+        }
+      return true;
+
+    }
 }
