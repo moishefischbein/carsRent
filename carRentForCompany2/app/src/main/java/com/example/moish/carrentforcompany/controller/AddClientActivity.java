@@ -103,7 +103,7 @@ public class AddClientActivity extends Activity implements View.OnClickListener{
         }
     }
 
-
+//this funcion check if the all field are filled
     boolean isFullTheAllTexBox(){
        String LN = lastNameEditText.getText().toString();
         String FN = firstNameEditText.getText().toString();
