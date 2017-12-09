@@ -1,12 +1,18 @@
 package com.example.moish.carrentforcompany.controller;
 
+import android.content.ContentValues;
+import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.moish.carrentforcompany.R;
+import com.example.moish.carrentforcompany.model.backend.DBManagerFactory;
+import com.example.moish.carrentforcompany.model.backend.Functions;
 
 public class AddReserveActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -27,7 +33,8 @@ public class AddReserveActivity extends AppCompatActivity implements View.OnClic
     private EditText IsFueled;
     private EditText LitersFueled;
     private EditText TotalToPay;
-    private Button addCarModelButton;
+    private EditText CarNumber;
+    private Button addCarReserveButton;
 
     /**
      * Find the Views in the layout<br />
@@ -46,9 +53,10 @@ public class AddReserveActivity extends AppCompatActivity implements View.OnClic
         IsFueled = (EditText)findViewById( R.id.IsFueled );
         LitersFueled = (EditText)findViewById( R.id.LitersFueled );
         TotalToPay = (EditText)findViewById( R.id.TotalToPay );
-        addCarModelButton = (Button)findViewById( R.id.addCarModelButton );
+        CarNumber = (EditText)findViewById( R.id.CarNumber );
+        addCarReserveButton = (Button)findViewById( R.id.addCarReserveButton );
 
-        addCarModelButton.setOnClickListener( this );
+        addCarReserveButton.setOnClickListener( this );
     }
 
     /**
@@ -57,11 +65,79 @@ public class AddReserveActivity extends AppCompatActivity implements View.OnClic
      * Auto-created on 2017-12-04 14:21:35 by Android Layout Finder
      * (http://www.buzzingandroid.com/tools/android-layout-finder)
      */
-    @Override
-    public void onClick(View v) {
-        if ( v == addCarModelButton ) {
-            // Handle clicks for addCarModelButton
+    private void addReserve(){
+        final ContentValues values = new ContentValues();
+        try{
+            long id = Long.valueOf(ReserveNumberId.getText().toString());
+
+
+
+            values.put(Functions.CarReserveConst.TOTAL_TO_PAY, TotalToPay.getText().toString());
+            values.put(Functions.CarReserveConst.START_KILOMETERS, StartKilometers.getText().toString());
+            values.put(Functions.CarReserveConst.RESERVE_NUMBER, ReserveNumberId.getText().toString());
+            values.put(Functions.CarReserveConst.RENT_END_DATE, RentEnd.getText().toString());
+            values.put(Functions.CarReserveConst.RENT_BEGGINING_DATE, RentBegginning.getText().toString());
+            values.put(Functions.CarReserveConst.IS_OPENED, IsOpened.getText().toString());
+            values.put(Functions.CarReserveConst.LITERS_FUELED, LitersFueled.getText().toString());
+            values.put(Functions.CarReserveConst.IS_FUELED, IsFueled.getText().toString());
+            values.put(Functions.CarReserveConst.END_KILOMETERS, EndKilometers.getText().toString());
+            values.put(Functions.CarReserveConst.CLIENT_NUMBER, ClientNumber.getText().toString());
+            values.put(Functions.CarReserveConst.CAR_NUMBER, CarNumber.getText().toString());
+
+            new AsyncTask<Void, Void, Long>(){
+                @Override
+                protected void onPostExecute(Long aLong) {
+                    Toast.makeText(getBaseContext(), "ID: " + aLong, Toast.LENGTH_LONG).show();
+                    Log.d("reserve", values.toString());
+                }
+
+                @Override
+                protected Long doInBackground(Void... voids) {
+                    return DBManagerFactory.getManager().addCarReserve(values);
+                }
+            }.execute();
+        }
+        catch (Exception e){e.toString();
+        }
+        finally{
+            this.finish();
         }
     }
 
+
+    @Override
+    public void onClick(View v) {
+        if ( v == addCarReserveButton ) {
+            if(isFullTheAllTexBox()== true)
+                addReserve();
+            else { Toast.makeText(getBaseContext(), "There is an empty field, please fill in: ", Toast.LENGTH_LONG).show();}
+        }
+    }
+
+    private void clearEditTexts(EditText[] editTexts){
+        for (EditText editText : editTexts){
+            editText.setText("");
+        }
+    }
+
+    //this funcion check if the all field are filled
+    boolean isFullTheAllTexBox(){
+        String RN = ReserveNumberId.getText().toString();
+        String CN = ClientNumber.getText().toString();
+        String IO = IsOpened.getText().toString();
+        String RB = RentBegginning.getText().toString();
+        String RE = RentEnd.getText().toString();
+        String SK = StartKilometers.getText().toString();
+        String EK = EndKilometers.getText().toString();
+        String IF = IsFueled.getText().toString();
+        String LF = LitersFueled.getText().toString();
+        String TP = TotalToPay.getText().toString();
+        String CNB = CarNumber.getText().toString();
+        if(RN.isEmpty()|| CN.isEmpty() || IO.isEmpty() || RB.isEmpty() || RE.isEmpty() || SK.isEmpty()||
+                EK.isEmpty()|| IF.isEmpty()|| LF.isEmpty()|| TP.isEmpty()|| CNB.isEmpty()){
+            return false;
+        }
+        return true;
+
+    }
 }

@@ -1,6 +1,7 @@
 package com.example.moish.carrentforcompany.controller;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -13,6 +14,7 @@ public class ReserveActivity extends Activity implements View.OnClickListener{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reserve);
+        findViews();
     }
 
     private Button addReserveButton;
@@ -41,7 +43,8 @@ public class ReserveActivity extends Activity implements View.OnClickListener{
     @Override
     public void onClick(View v) {
         if ( v == addReserveButton ) {
-            // Handle clicks for addReserveButton
+            Intent intent = new Intent(this,AddReserveActivity.class);
+            startActivity(intent);
         } else if ( v == removeReserveButton ) {
             // Handle clicks for removeReserveButton
         } else if ( v == updateReserveButton ) {
