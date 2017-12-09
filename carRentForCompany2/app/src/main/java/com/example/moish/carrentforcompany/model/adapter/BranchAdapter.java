@@ -45,7 +45,7 @@ public class BranchAdapter extends BaseAdapter{
     public View getView(int i, View view, ViewGroup viewGroup) {
 
         View v = activity.getLayoutInflater()
-                .inflate(R.layout.item_row, viewGroup, false);
+                .inflate(R.layout.test, viewGroup, false);
 
         Branch branch = branchs.get(i);
 

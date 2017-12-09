@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -14,7 +13,7 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="@string/city"
-        android:inputType="number" />
+        android:inputType="textPersonName" />
 
 
     <EditText
@@ -31,7 +30,7 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="@string/adress_number"
-        android:inputType="textPersonName" />
+        android:inputType="phone" />
 
     <EditText
         android:id="@+id/NumberOfParkingAvailableEditText"
@@ -39,7 +38,7 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="@string/number_ofParking_available"
-        android:inputType="textPersonName" />
+        android:inputType="phone" />
 
     <EditText
         android:id="@+id/BranchNumber_idEditText"
