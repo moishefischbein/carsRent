@@ -8,7 +8,7 @@ import android.widget.TextView;
 
 import com.example.moish.carrentforcompany.R;
 import com.example.moish.carrentforcompany.model.entities.Branch;
-import com.example.moish.carrentforcompany.model.entities.Client;
+
 
 import java.util.List;
 
@@ -18,27 +18,27 @@ import java.util.List;
 
 public class BranchAdapter extends BaseAdapter{
 
-    private final List<Client> clients;
+    private final List<Branch> branchs;
     private final Activity activity;
 
-    public BranchAdapter(List<Client> clients, Activity activity) {
-        this.clients = clients;
+    public BranchAdapter(List<Branch> Branch, Activity activity) {
+        this.branchs = Branch;
         this.activity = activity;
     }
 
     @Override
     public int getCount() {
-        return clients.size();
+        return branchs.size();
     }
 
     @Override
     public Object getItem(int i) {
-        return clients.get(i);
+        return branchs.get(i);
     }
 
     @Override
     public long getItemId(int i) {
-        return ((Client) getItem(i)).getId();
+        return ((Branch) getItem(i)).getBranchNumber_id();
     }
 
     @Override
@@ -47,7 +47,7 @@ public class BranchAdapter extends BaseAdapter{
         View v = activity.getLayoutInflater()
                 .inflate(R.layout.item_row, viewGroup, false);
 
-        Client client = clients.get(i);
+        Branch branch = branchs.get(i);
 
         try {
 
@@ -56,8 +56,8 @@ public class BranchAdapter extends BaseAdapter{
             TextView ide = (TextView) v.findViewById(R.id.itemId);
             TextView name = (TextView) v.findViewById(R.id.itemName);
 
-            name.setText(client.getFirstName() + " " + client.getLastName());
-            ide.setText(Integer.toString(client.getId()));
+            name.setText(branch.getCity() + " " + branch.getStreet());
+            ide.setText(Integer.toString(branch.getBranchNumber_id()));
             //ide.setText(client.getId());
 
         }catch (Exception ex){ex.toString();}

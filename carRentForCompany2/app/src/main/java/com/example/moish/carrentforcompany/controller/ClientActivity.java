@@ -2,7 +2,6 @@ package com.example.moish.carrentforcompany.controller;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -48,7 +47,7 @@ public class ClientActivity extends Activity implements View.OnClickListener {
         } else if ( v == UpdateClientButton ) {
             // Handle clicks for UpdateClientButton
         } else if ( v == ShowCarButton ) {
-            Intent intent = new Intent(this,ClientListActivity.class);
+            Intent intent = new Intent(this,ListOfClients.class);
             startActivity(intent);
         }
     }

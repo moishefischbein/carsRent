@@ -26,7 +26,7 @@
         <activity android:name=".controller.AddCarModelActivity" />
         <activity android:name=".controller.AddReserveActivity" />
         <activity android:name=".controller.AddCarActivity" />
-        <activity android:name=".controller.ClientListActivity"></activity>
+        <activity android:name=".controller.ListOfClients"></activity>
     </application>
 
 </manifest>

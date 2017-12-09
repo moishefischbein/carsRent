@@ -17,7 +17,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class ClientListActivity extends Activity {
+public class ListOfClients extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
