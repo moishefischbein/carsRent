@@ -1,8 +1,10 @@
 package com.example.moish.carrentforcompany.controller;
 
+
+
+import android.app.Activity;
 import android.content.ContentValues;
 import android.os.AsyncTask;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -14,14 +16,14 @@ import com.example.moish.carrentforcompany.R;
 import com.example.moish.carrentforcompany.model.backend.DBManagerFactory;
 import com.example.moish.carrentforcompany.model.backend.Functions;
 
-public class AddCarActivity extends AppCompatActivity implements View.OnClickListener  {
+public class AddCarActivity extends Activity implements View.OnClickListener  {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_car);
 
-        findViews();
+       // findViews();
     }
 
     private EditText CarCodeIdText;
