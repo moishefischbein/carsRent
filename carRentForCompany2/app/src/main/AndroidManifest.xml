@@ -29,6 +29,8 @@
         <activity android:name=".controller.ListOfClients" />
         <activity android:name=".controller.ListOfReserves" />
         <activity android:name=".controller.ListOfCars"/>
+        <activity android:name=".controller.ListOfCarModels"></activity>
+        <activity android:name=".controller.ListOfBranchs"></activity>
     </application>
 
 </manifest>

@@ -56,7 +56,8 @@ public class CarModelActivity extends Activity implements View.OnClickListener {
         } else if ( v == UpdateCarModelButton ) {
             // Handle clicks for UpdateCarModelButton
         } else if ( v == ShowCarModelButton ) {
-            // Handle clicks for ShowCarModelButton
+            Intent intent = new Intent(this, ListOfCarModels.class);
+            startActivity(intent);
         }
     }
 

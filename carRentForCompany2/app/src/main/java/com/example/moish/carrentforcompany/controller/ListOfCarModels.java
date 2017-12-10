@@ -1,23 +1,25 @@
 package com.example.moish.carrentforcompany.controller;
 
-
-
 import android.app.Activity;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.widget.ListView;
 
+import com.example.moish.carrentforcompany.R;
+import com.example.moish.carrentforcompany.model.adapter.CarModelAdapter;
 import com.example.moish.carrentforcompany.model.adapter.ClientAdapter;
 import com.example.moish.carrentforcompany.model.backend.DBManagerFactory;
+import com.example.moish.carrentforcompany.model.entities.CarModel;
 import com.example.moish.carrentforcompany.model.entities.Client;
-import com.example.moish.carrentforcompany.R;
 
-
-import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Created by moish on 09/12/2017.
+ */
 
-public class ListOfClients extends Activity {
+public class ListOfCarModels extends Activity {
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,29 +31,29 @@ public class ListOfClients extends Activity {
 
     private void getListItems(){
 
-        new AsyncTask<Void, Void, List<Client>>(){
+        new AsyncTask<Void, Void, List<CarModel>>(){
 
-            List<Client> clients;
+            List<CarModel> carModels;
 
             @Override
-            protected List<Client> doInBackground(Void... voids) {
-                clients = DBManagerFactory.getManager().getClients();
-                return clients;
+            protected List<CarModel> doInBackground(Void... voids) {
+                carModels = DBManagerFactory.getManager().getCarModels();
+                return carModels;
             }
 
             @Override
-            protected void onPostExecute(List<Client> clients) {
-                initItemByListView(clients);
+            protected void onPostExecute(List<CarModel> carModels) {
+                initItemByListView(carModels);
             }
         }.execute();
 
     }
 
-    private void initItemByListView(List<Client> clients){
+    private void initItemByListView(List<CarModel> carModels){
 
         ListView lv = (ListView) findViewById(R.id.clientsList);
 
-        ClientAdapter adapter = new ClientAdapter(clients, this);
+        CarModelAdapter adapter = new CarModelAdapter(carModels, this);
 
         lv.setAdapter(adapter);
     }

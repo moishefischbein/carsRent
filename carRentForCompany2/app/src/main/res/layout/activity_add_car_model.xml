@@ -39,7 +39,7 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="@string/motor_volume"
-        android:inputType="textPersonName" />
+        android:inputType="phone" />
 
     <EditText
         android:id="@+id/IsAutomaticEditText"

@@ -57,8 +57,11 @@ public class BranchActivity extends Activity implements View.OnClickListener {
         } else if ( v == UpdateBranchButton ) {
             // Handle clicks for UpdateBranchButton
         } else if ( v == ShowBranchButton ) {
-            // Handle clicks for ShowBranchButton
+            Intent intent = new Intent(this, ListOfBranchs.class);
+            startActivity(intent);
         }
+        Intent intent = new Intent(this,ListOfClients.class);
+        startActivity(intent);
     }
 
 
