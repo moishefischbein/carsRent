@@ -70,8 +70,6 @@ public class AddReserveActivity extends AppCompatActivity implements View.OnClic
         try{
             long id = Long.valueOf(ReserveNumberId.getText().toString());
 
-
-
             values.put(Functions.CarReserveConst.TOTAL_TO_PAY, TotalToPay.getText().toString());
             values.put(Functions.CarReserveConst.START_KILOMETERS, StartKilometers.getText().toString());
             values.put(Functions.CarReserveConst.RESERVE_NUMBER, ReserveNumberId.getText().toString());

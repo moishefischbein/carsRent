@@ -50,7 +50,8 @@ public class ReserveActivity extends Activity implements View.OnClickListener{
         } else if ( v == updateReserveButton ) {
             // Handle clicks for updateReserveButton
         } else if ( v == showReservesButton ) {
-            // Handle clicks for showReservesButton
+            Intent intent = new Intent(this,ListOfReserves.class);
+            startActivity(intent);
         }
     }
 

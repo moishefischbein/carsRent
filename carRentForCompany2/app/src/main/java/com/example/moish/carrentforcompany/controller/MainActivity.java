@@ -56,10 +56,8 @@ public class MainActivity extends Activity implements View.OnClickListener{
             Intent intent = new Intent(this,ClientActivity.class);
             startActivity(intent);
         } else if ( v == CarButton ) {
-            Intent intent = new Intent(this,ListOfClients.class);
+            Intent intent = new Intent(this,CarActivity.class);
             startActivity(intent);
-            //Intent intent = new Intent(this, CarActivity.class);
-            //startActivity(intent);
         } else if ( v == CarModelButton ) {
             Intent intent = new Intent(this, CarModelActivity.class);
             startActivity(intent);
