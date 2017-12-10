@@ -26,11 +26,14 @@
         <activity android:name=".controller.AddCarModelActivity" />
         <activity android:name=".controller.AddReserveActivity" />
         <activity android:name=".controller.AddCarActivity" />
+
         <activity android:name=".controller.ListOfClients" />
         <activity android:name=".controller.ListOfReserves" />
         <activity android:name=".controller.ListOfCars"/>
+
         <activity android:name=".controller.ListOfCarModels"></activity>
         <activity android:name=".controller.ListOfBranchs"></activity>
+
     </application>
 
 </manifest>
