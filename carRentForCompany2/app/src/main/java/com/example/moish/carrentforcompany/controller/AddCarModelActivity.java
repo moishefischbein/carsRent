@@ -141,7 +141,7 @@ public class AddCarModelActivity extends Activity implements View.OnClickListene
 
     private void findViews() {
         modelCodeIdText = (EditText)findViewById( R.id.ModelCode_idText);
-        numberOfSeatsEditText = (EditText)findViewById( R.id.CompanyNameText );
+        companyNameText = (EditText)findViewById( R.id.CompanyNameText );
         modelNameEditText = (EditText)findViewById( R.id.ModelNameEditText);
         motorVolumeEditText = (EditText)findViewById( R.id.MotorVolumeEditText );
         isAutomaticEditText = (EditText)findViewById( R.id.IsAutomaticEditText);
@@ -152,7 +152,7 @@ public class AddCarModelActivity extends Activity implements View.OnClickListene
     }
 
 
-    private void addClient(){
+    private void addCarModel(){
         final ContentValues values = new ContentValues();
         try{
             long id = Long.valueOf(modelCodeIdText.getText().toString());
@@ -163,7 +163,7 @@ public class AddCarModelActivity extends Activity implements View.OnClickListene
             values.put(Functions.CarModelConst.ENGINE_VOLUME, motorVolumeEditText.getText().toString());
             values.put(Functions.CarModelConst.MODEL_NAME, modelNameEditText.getText().toString());
             values.put(Functions.CarModelConst.SEATING, numberOfSeatsEditText.getText().toString());
-            values.put(Functions.CarModelConst.COMPANY_NAME, numberOfSeatsEditText.getText().toString());
+            values.put(Functions.CarModelConst.COMPANY_NAME, companyNameText.getText().toString());
             values.put(Functions.CarModelConst.MODEL_ID, modelCodeIdText.getText().toString());
 
             new AsyncTask<Void, Void, Long>(){
@@ -191,7 +191,7 @@ public class AddCarModelActivity extends Activity implements View.OnClickListene
     public void onClick(View v) {
         if ( v == addCarModelButton ) {
             if(isFullTheAllTexBox()== true)
-                addClient();
+                addCarModel();
             else { Toast.makeText(getBaseContext(), "There is an empty field, please fill in: ", Toast.LENGTH_LONG).show();}
         }
     }
