@@ -7,7 +7,6 @@ import android.widget.ListView;
 
 import com.example.moish.carrentforcompany.R;
 import com.example.moish.carrentforcompany.model.adapter.BranchAdapter;
-import com.example.moish.carrentforcompany.model.adapter.ClientAdapter;
 import com.example.moish.carrentforcompany.model.backend.DBManagerFactory;
 import com.example.moish.carrentforcompany.model.entities.Branch;
 

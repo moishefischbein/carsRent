@@ -60,8 +60,8 @@ public class BranchActivity extends Activity implements View.OnClickListener {
             Intent intent = new Intent(this, ListOfBranchs.class);
             startActivity(intent);
         }
-        Intent intent = new Intent(this,ListOfClients.class);
-        startActivity(intent);
+        //Intent intent = new Intent(this,ListOfClients.class);
+        //startActivity(intent);
     }
 
 
