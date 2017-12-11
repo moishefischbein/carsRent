@@ -1,7 +1,6 @@
 package com.example.moish.carrentforcompany.controller;
 
 
-
 import android.app.Activity;
 import android.content.ContentValues;
 import android.os.AsyncTask;
@@ -18,32 +17,26 @@ import com.example.moish.carrentforcompany.model.backend.Functions;
 
 public class AddCarActivity extends Activity implements View.OnClickListener  {
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_car);
 
-       // findViews();
-    }
 
-    private EditText CarCodeIdText;
-    private EditText CarModelText;
-    private EditText KilometersTraveledText;
-    private EditText CarsFixedBranchText;
-    private Button addCarButton;
+    /*private EditText carCode_idText;
+    private EditText   carModelText;
+    private EditText   kilometersTraveledText;
+    private EditText   carsFixedBranchText;
+    private Button     addCarButton;
 
-    /**
+    *//**
      * Find the Views in the layout<br />
      * <br />
      * Auto-created on 2017-12-04 13:49:01 by Android Layout Finder
      * (http://www.buzzingandroid.com/tools/android-layout-finder)
-     */
+     *//*
     private void findViews() {
-        CarCodeIdText = (EditText)findViewById( R.id.CarCode_idText );
-        CarModelText = (EditText)findViewById( R.id.CarModelText );
-        KilometersTraveledText = (EditText)findViewById( R.id.KilometersTraveledText );
-        CarsFixedBranchText = (EditText)findViewById( R.id.CarsFixedBranchText );
-        addCarButton = (Button)findViewById( R.id.addCarModelButton );
+        carCode_idText           = (EditText)findViewById( R.id.CarCode_idText );
+        carModelText            = (EditText)findViewById( R.id.CarModelText );
+        kilometersTraveledText   = (EditText)findViewById( R.id.KilometersTraveledText );
+        carsFixedBranchText      = (EditText)findViewById( R.id.CarsFixedBranchText );
+        addCarButton              = (Button)findViewById( R.id.addCarButton );
 
         addCarButton.setOnClickListener( this );
     }
@@ -51,25 +44,21 @@ public class AddCarActivity extends Activity implements View.OnClickListener  {
     private void addCar(){
         final ContentValues values = new ContentValues();
         try{
-            long id = Long.valueOf(CarCodeIdText.getText().toString());
+            long id = Long.valueOf(carCode_idText.getText().toString());
 
 
-            values.put(Functions.CarConst.MODEL, CarModelText.getText().toString());
 
-            int kilometers = Integer.valueOf(this.KilometersTraveledText.toString());
-            values.put(Functions.CarConst.KILOMETERS_TRAVELED, kilometers);
+            values.put(Functions.CarConst.CAR_NUMBER, carCode_idText.getText().toString());
+            values.put(Functions.CarConst.FIXED_BRANCH, carsFixedBranchText.getText().toString());
+            values.put(Functions.CarConst.KILOMETERS_TRAVELED, kilometersTraveledText.getText().toString());
+            values.put(Functions.CarConst.MODEL,carModelText.getText().toString());
 
-            int fixedBranch = Integer.valueOf(this.CarsFixedBranchText.getText().toString());
-            values.put(Functions.CarConst.FIXED_BRANCH, fixedBranch);
-
-            int carNumber = Integer.valueOf(this.CarCodeIdText.getText().toString());
-            values.put(Functions.CarConst.CAR_NUMBER, carNumber);
 
             new AsyncTask<Void, Void, Long>(){
                 @Override
                 protected void onPostExecute(Long aLong) {
                     Toast.makeText(getBaseContext(), "ID: " + aLong, Toast.LENGTH_LONG).show();
-                    Log.d("car", values.toString());
+                    //Log.d("client", values.toString());
                 }
 
                 @Override
@@ -89,12 +78,112 @@ public class AddCarActivity extends Activity implements View.OnClickListener  {
     @Override
     public void onClick(View v) {
         if ( v == addCarButton ) {
-            if(isFullTheAllTexBox())
+            Toast.makeText(getBaseContext(), "There is an empty field, please fill in: ", Toast.LENGTH_LONG).show();
+            if(isFullTheAllTexBox()== true)
                 addCar();
             else { Toast.makeText(getBaseContext(), "There is an empty field, please fill in: ", Toast.LENGTH_LONG).show();}
         }
     }
 
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_add_car);
+        Toast.makeText(getBaseContext(), "There is an empty field, please fill in: ", Toast.LENGTH_LONG).show();
+       // findViews();
+    }
+
+    private void clearEditTexts(EditText[] editTexts){
+        for (EditText editText : editTexts){
+            editText.setText("");
+        }
+    }
+
+    //this function check if the all field are filled
+    boolean isFullTheAllTexBox(){
+        String CC = carCode_idText.getText().toString();
+        String CM = carModelText.getText().toString();
+        String KT = kilometersTraveledText.getText().toString();
+        String CF = carsFixedBranchText.getText().toString();
+        if(CC.isEmpty()|| CM.isEmpty() || KT.isEmpty() || CF.isEmpty()){
+            return false;
+        }
+        return true;
+
+    }
+
+}
+*/
+
+
+    private EditText carCode_idText;
+    private EditText carModelText;
+    private EditText kilometersTraveledText;
+    private EditText carsFixedBranchText;
+    private Button addCarButton;
+
+
+    private void findViews() {
+        carCode_idText          = (EditText)findViewById( R.id.CarCode_idText );
+        carModelText           = (EditText)findViewById( R.id.CarModelText );
+        kilometersTraveledText  = (EditText)findViewById( R.id.KilometersTraveledText );
+        carsFixedBranchText     = (EditText)findViewById( R.id.CarsFixedBranchText );
+        addCarButton             = (Button)findViewById( R.id.addCarButton );
+
+
+        addCarButton.setOnClickListener( this );
+    }
+
+
+    private void addCar(){
+        final ContentValues values = new ContentValues();
+        try{
+            long id = Long.valueOf(carCode_idText.getText().toString());
+
+
+
+            values.put(Functions.CarConst.CAR_NUMBER, carCode_idText.getText().toString());
+            values.put(Functions.CarConst.FIXED_BRANCH, carsFixedBranchText.getText().toString());
+            values.put(Functions.CarConst.KILOMETERS_TRAVELED, kilometersTraveledText.getText().toString());
+            values.put(Functions.CarConst.MODEL,carModelText.getText().toString());
+
+            new AsyncTask<Void, Void, Long>(){
+                @Override
+                protected void onPostExecute(Long aLong) {
+                    Toast.makeText(getBaseContext(), "ID: " + aLong, Toast.LENGTH_LONG).show();
+                    Log.d("client", values.toString());
+                }
+
+                @Override
+                protected Long doInBackground(Void... voids) {
+                    return DBManagerFactory.getManager().addCar(values);
+                }
+            }.execute();
+        }
+        catch (Exception e){e.toString();
+        }
+        finally{
+            this.finish();
+        }
+    }
+
+
+    @Override
+    public void onClick(View v) {
+        if ( v == addCarButton ) {
+            if(isFullTheAllTexBox()== true)
+                addCar();
+            else { Toast.makeText(getBaseContext(), "There is an empty field, please fill in: ", Toast.LENGTH_LONG).show();}
+        }
+    }
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_add_car);
+        findViews();
+    }
 
     private void clearEditTexts(EditText[] editTexts){
         for (EditText editText : editTexts){
@@ -104,17 +193,17 @@ public class AddCarActivity extends Activity implements View.OnClickListener  {
 
     //this funcion check if the all field are filled
     boolean isFullTheAllTexBox(){
-        String CC = CarCodeIdText.getText().toString();
-        String CM = CarModelText.getText().toString();
-        String KT = KilometersTraveledText.getText().toString();
-        String CF = CarsFixedBranchText.getText().toString();
-        if(CC.isEmpty()|| CM.isEmpty() || KT.isEmpty() || CF.isEmpty()){
+        String LN = carCode_idText.getText().toString();
+        String FN = carModelText.getText().toString();
+        String CI = kilometersTraveledText.getText().toString();
+        String TL = carsFixedBranchText.getText().toString();
+
+        if(LN.isEmpty()|| FN.isEmpty() || CI.isEmpty() || TL.isEmpty() ){
             return false;
         }
         return true;
 
     }
-
 }
 
 
