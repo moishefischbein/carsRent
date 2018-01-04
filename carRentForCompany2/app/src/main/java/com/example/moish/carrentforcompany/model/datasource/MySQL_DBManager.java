@@ -206,7 +206,7 @@ public class MySQL_DBManager implements DB_manager {
     @Override
     public long addCar(ContentValues values) {
         try {
-            String result = PHPtools.POST(WEB_URL + "/addCar.php", values);
+            String result = PHPtools.POST(WEB_URL + "addCar.php", values);
             long id = Long.parseLong(result);
             if (id > 0)
                 SetUpdate();
