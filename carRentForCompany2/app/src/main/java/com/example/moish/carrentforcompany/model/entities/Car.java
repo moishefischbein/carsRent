@@ -5,10 +5,10 @@ package com.example.moish.carrentforcompany.model.entities;
  */
 
 public class Car {
-    int fixedBranch;
-    int model;
-    double kilometersTraveled;
-    int carNumber_id;
+    int     fixedBranch;
+    int     model;
+    double  kilometersTraveled;
+    int     carNumber_id;
 
     public Car(int fixedBranch, int model, double kilometersTraveled, int carNumber_id) {
         this.fixedBranch = fixedBranch;

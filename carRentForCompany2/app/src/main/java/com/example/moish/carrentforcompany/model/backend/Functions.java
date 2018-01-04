@@ -25,9 +25,9 @@ public class Functions {
 
     public static class ClientConst {
         public static final String ID = "_id";
-        public static final String FIRSTNAME = "firtsname";
-        public static final String LASTTNAME = "lastname";
-        public static final String PHONE = "phone";
+        public static final String FIRSTNAME = "firstName";
+        public static final String LASTTNAME = "lastName";
+        public static final String PHONE = "phoneNumber";
         public static final String EMAIL = "email";
         public static final String CREDITCARDNUMBER = "CreditCardNumber";
 
@@ -46,11 +46,11 @@ public class Functions {
 
     public static class CarModelConst {
         public static final String MODEL_ID = "_id";
-        public static final String COMPANY_NAME = "CompanyName";
+        public static final String COMPANY_NAME = "companyName";
         public static final String MODEL_NAME = "modelName";
-        public static final String ENGINE_VOLUME = "engineVolume";
+        public static final String ENGINE_VOLUME = "motorVolume";
         public static final String ISAUTOMATIC = "isAutomatic";
-        public static final String SEATING = "seating";
+        public static final String SEATING = "numberOfSeats";
     }
 
     public static class CarConst {

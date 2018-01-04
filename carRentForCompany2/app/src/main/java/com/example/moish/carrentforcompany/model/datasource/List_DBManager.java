@@ -243,6 +243,13 @@ import static android.R.id.list;
     public List<CarReserve> getCarReserve() {
         return carReserves;
     }
+
+    @Override
+    public boolean isUpdate() {
+        return false;
+    }
+
+
 }
 
 

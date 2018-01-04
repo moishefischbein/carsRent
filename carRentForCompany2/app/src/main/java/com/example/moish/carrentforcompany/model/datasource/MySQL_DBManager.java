@@ -3,116 +3,149 @@ package com.example.moish.carrentforcompany.model.datasource;
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.MatrixCursor;
+import android.inputmethodservice.Keyboard;
+import android.provider.MediaStore;
 import android.util.Log;
+import android.widget.Toast;
 
+import com.example.moish.carrentforcompany.model.adapter.ClientAdapter;
+import com.example.moish.carrentforcompany.model.backend.DB_manager;
 import com.example.moish.carrentforcompany.model.backend.Functions;
+import com.example.moish.carrentforcompany.model.entities.Branch;
+import com.example.moish.carrentforcompany.model.entities.Car;
+import com.example.moish.carrentforcompany.model.entities.CarModel;
+import com.example.moish.carrentforcompany.model.entities.CarReserve;
+import com.example.moish.carrentforcompany.model.entities.Client;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by moish on 18/12/2017.
  */
 
-public class MySQL_DBManager implements DB_manager{
+public class MySQL_DBManager implements DB_manager {
 
 
     private final String UserName="fischbei";
-    private final String WEB_URL = "http://"+UserName+".vlab.jct.ac.il/Academy/";
+    private final String WEB_URL = "http://"+UserName+".vlab.jct.ac.il/";
 
 
-    private boolean updateFlag = false;
 
-
-    public void printLog(String message)
-    {
-        Log.d(this.getClass().getName(),"\n"+message);
-    }
-    public void printLog(Exception message)
-    {
-        Log.d(this.getClass().getName(),"Exception-->\n"+message);
+    @Override
+    public boolean removeClient(long id) {
+        return false;
     }
 
     @Override
-    public long addStudent(ContentValues values) {
+    public boolean updateClient(long id, ContentValues values) {
+        return false;
+    }
+
+    @Override public List<Client> getClients() {
+        List<Client> result = new ArrayList<Client>();
         try {
-            String result = PHPtools.POST(WEB_URL + "/addStudent.php", values);
+            String str = PHPtools.GET(WEB_URL + "Client.php");
+            JSONArray array = new JSONObject(str).getJSONArray("Client");
+            for (int i = 0; i < array.length(); i++) {
+                JSONObject jsonObject = array.getJSONObject(i);
+                Client client = new Client();
+                client.setLastName(jsonObject.getString("lastName"));
+                client.setFirstName(jsonObject.getString("firstName"));
+                client.setId(jsonObject.getInt("_id"));
+                client.setPhoneNumber(jsonObject.getString("phoneNumber"));
+                client.setEmail(jsonObject.getString("email"));
+                client.setCreditCardNumber(jsonObject.getLong("creditCardNumber"));
+
+                result.add(client);
+            }
+            return result;
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+    @Override
+    public long addClient(ContentValues values)
+    {
+        try {
+            String result = PHPtools.POST(WEB_URL + "/addClient.php", values);
             long id = Long.parseLong(result);
             if (id > 0)
                 SetUpdate();
-            printLog("addStudent:\n" + result);
+            printLog("addClient:\n" + result);
             return id;
-        } catch (IOException e) {
-            printLog("addStudent Exception:\n" + e);
+        } catch (IOException e)
+        {
+            printLog("addClient Exception:\n" + e);
+            return -1;
+        }
+    }
+
+    private void printLog(String s) {
+       // Toast.makeText(, "There is an empty field, please fill in: ", Toast.LENGTH_LONG).show();
+    }
+
+    private void SetUpdate() {
+
+
+
+
+
+
+    }
+
+    @Override
+    public long addCarModel(ContentValues values) {
+        try {
+            String result = PHPtools.POST(WEB_URL + "/addCarModel.php", values);
+            long id = Long.parseLong(result);
+            if (id > 0)
+                SetUpdate();
+            printLog("addCarModel:\n" + result);
+            return id;
+        } catch (IOException e)
+        {
+            printLog("addCarModel Exception:\n" + e);
             return -1;
         }
     }
 
     @Override
-    public long addLecturer(ContentValues values) {
-        try {
-            String result = PHPtools.POST(WEB_URL + "/addLecturer.php", values);
-            long id = Long.parseLong(result);
-            if (id > 0)
-                SetUpdate();
-            printLog("addLecturer:\n" +result);
-            return id;
-        } catch (IOException e) {
-            printLog("addLecturer:\n" +e);
-        }
-        return -1;
+    public boolean removeCarModel(long id) {
+        return false;
     }
 
     @Override
-    public long addCourse(ContentValues values) {
-        try {
-            String result = PHPtools.POST(WEB_URL + "/addCourse.php", values);
-            long id = Long.parseLong(result);
-            if (id > 0)
-                SetUpdate();
-            printLog("addCourse:\n" +result);
-            return id;
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return -1;
+    public boolean updateCarModel(long id, ContentValues values) {
+        return false;
     }
 
-
     @Override
-    public Cursor getStudents() {
+    public List<CarModel> getCarModels() {
+        List<CarModel> result = new ArrayList<CarModel>();
         try {
-            MatrixCursor matrixCursor = new MatrixCursor(new String[]{
-
-                    Functions.ClientConst.ID,
-                    Functions.ClientConst.FIRSTNAME,
-                    Functions.ClientConst.LASTTNAME,
-                    Functions.ClientConst.PHONE,
-                    Functions.ClientConst.EMAIL,
-                    Functions.ClientConst.CREDITCARDNUMBER
-
-                    });
-            String str = PHPtools.GET(WEB_URL + "/students.php");
-            JSONArray array = new JSONObject(str).getJSONArray("students");
-
-
+            String str = PHPtools.GET(WEB_URL + "CarModel.php");
+            JSONArray array = new JSONObject(str).getJSONArray("CarModel");
             for (int i = 0; i < array.length(); i++) {
-                JSONObject jsonObject = null;
+                JSONObject jsonObject = array.getJSONObject(i);
+                CarModel carModel = new CarModel();
+                carModel.setModelName(jsonObject.getString("modelName"));
+                carModel.setCompanyName(jsonObject.getString("companyName"));
+                carModel.setMotorVolume(jsonObject.getInt("motorVolume"));
+                carModel.setNumberOfSeats(jsonObject.getInt("numberOfSeats"));
+                carModel.setAutomatic(jsonObject.getBoolean("isAutomatic"));
+                carModel.setModelCode(jsonObject.getInt("_id"));
 
-                jsonObject = array.getJSONObject(i);
-
-                matrixCursor.addRow(new Object[]{
-                        jsonObject.getInt   (Functions.ClientConst.ID),
-                        jsonObject.getString(Functions.ClientConst.FIRSTNAME),
-                        jsonObject.getString(Functions.ClientConst.LASTTNAME),
-                        jsonObject.getString(Functions.ClientConst.PHONE),
-                        jsonObject.getString(Functions.ClientConst.EMAIL),
-                        jsonObject.getString(Functions.ClientConst.CREDITCARDNUMBER)
-                });
+                result.add(carModel);
             }
-            return matrixCursor;
+            return result;
+
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -120,143 +153,166 @@ public class MySQL_DBManager implements DB_manager{
     }
 
     @Override
-    public Cursor getLecturer() {
+    public long addBranch(ContentValues values) {
         try {
-            MatrixCursor matrixCursor = new MatrixCursor(new String[]
-                    {
-                            Functions.BranchConst.STREET,
-                            Functions.BranchConst.ADESSNUMBER,
-                            Functions.BranchConst.CITY,
-                            Functions.BranchConst.BRANCHNUMBER,
-                            Functions.BranchConst.NUMBEROFPARKINGAVAILABLE,
-
-                    });
-            String str = PHPtools.GET(WEB_URL + "/lecturers.php");
-            JSONArray array = new JSONObject(str).getJSONArray("lecturers");
-
-
-            for (int i = 0; i < array.length(); i++) {
-                JSONObject jsonObject = null;
-
-                jsonObject = array.getJSONObject(i);
-
-                matrixCursor.addRow(new Object[]{
-
-                        jsonObject.getInt(Functions.BranchConst.STREET),
-                        jsonObject.getString(Functions.BranchConst.ADESSNUMBER),
-                        jsonObject.getString(Functions.BranchConst.CITY),
-                        jsonObject.getInt(Functions.BranchConst.BRANCHNUMBER)
-                });
-            }
-            return matrixCursor;
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return null;
-    }
-
-    @Override
-    public Cursor getCourses() {
-        String[] columns = new String[]
-                {
-                        Functions.CarModelConst.COMPANY_NAME,
-                        Functions.CarModelConst.ENGINE_VOLUME,
-                        Functions.CarModelConst.ISAUTOMATIC,
-                        Functions.CarModelConst.MODEL_ID,
-                        Functions.CarModelConst.MODEL_NAME,
-                        Functions.CarModelConst.SEATING,
-
-                };
-
-        MatrixCursor matrixCursor = new MatrixCursor(columns);
-        try {
-            String str = PHPtools.GET(WEB_URL + "/courses.php");
-            JSONArray array = new JSONObject(str).getJSONArray("courses");
-
-
-            for (int i = 0; i < array.length(); i++) {
-                JSONObject jsonObject = null;
-
-                jsonObject = array.getJSONObject(i);
-
-                matrixCursor.addRow(new Object[]{
-                        jsonObject.getInt(Functions.CarModelConst.COMPANY_NAME),
-                        jsonObject.getString(Functions.CarModelConst.ENGINE_VOLUME),
-                        jsonObject.getInt(Functions.CarModelConst.ISAUTOMATIC),
-                        jsonObject.getBoolean(Functions.CarModelConst.MODEL_ID),
-                        jsonObject.getInt(Functions.CarModelConst.MODEL_NAME)
-                });
-            }
-            return matrixCursor;
-        } catch (Exception e) {
-            return null;
-        }
-
-
-    }
-
-
-    @Override
-    public boolean removeStudent(long id) {
-        return false;
-    }
-
-    @Override
-    public boolean removeCourse(long id) {
-        return false;
-    }
-
-    @Override
-    public boolean removeLecturer(long id) {
-        return false;
-    }
-
-
-    @Override
-    public boolean updateLecturer(long id, ContentValues values) {
-        return false;
-    }
-
-    @Override
-    public long addStudentCourse(ContentValues values) {
-        try {
-            String result = PHPtools.POST(WEB_URL + "/addStudentCourse.php", values);
+            String result = PHPtools.POST(WEB_URL + "/addBranch.php", values);
             long id = Long.parseLong(result);
             if (id > 0)
                 SetUpdate();
-            printLog("addStudentCourse:\n" +result);
+            printLog("addBranch:\n" + result);
             return id;
-        } catch (IOException e) {
-            printLog("addStudentCourse:\n" +e);
-        }
-        return -1;
-    }
-
-    @Override
-    public boolean updateStudent(long id, ContentValues values) {
-        return false;
-    }
-
-    @Override
-    public boolean updateCourse(long id, ContentValues values) {
-        return false;
-    }
-
-
-    private void SetUpdate()
-    {
-        updateFlag = true;
-    }
-
-    @Override
-    public boolean isUpdatet() {
-        if(updateFlag)
+        } catch (IOException e)
         {
-            updateFlag=false;
-            return  true;
+            printLog("addBranch Exception:\n" + e);
+            return -1;
         }
+    }
 
-        return  false;
+    @Override
+    public boolean removeBranch(long id) {
+        return false;
+    }
+
+    @Override
+    public boolean updateBranch(long id, ContentValues values) {
+        return false;
+    }
+
+    @Override
+    public List<Branch> getBranchs() {
+        List<Branch> result = new ArrayList<Branch>();
+        try {
+            String str = PHPtools.GET(WEB_URL + "Branch.php");
+            JSONArray array = new JSONObject(str).getJSONArray("Branch");
+            for (int i = 0; i < array.length(); i++) {
+                JSONObject jsonObject = array.getJSONObject(i);
+                Branch branch = new Branch();
+                branch.setNumberOfParkingAvailable(jsonObject.getInt("NumberOfParkingAvailable"));
+                branch.setAdressNumber(jsonObject.getString("AdressNumber"));
+                branch.setCity(jsonObject.getString("City"));
+                branch.setStreet(jsonObject.getString("Street"));
+                branch.setBranchNumber_id(jsonObject.getInt("_id"));
+
+                result.add(branch);
+            }
+            return result;
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    @Override
+    public long addCar(ContentValues values) {
+        try {
+            String result = PHPtools.POST(WEB_URL + "/addCar.php", values);
+            long id = Long.parseLong(result);
+            if (id > 0)
+                SetUpdate();
+            printLog("addCar:\n" + result);
+            return id;
+        } catch (IOException e)
+        {
+            printLog("addCar Exception:\n" + e);
+            return -1;
+        }
+    }
+
+    @Override
+    public boolean removeCar(long id) {
+        return false;
+    }
+
+    @Override
+    public boolean updateCar(long id, ContentValues values) {
+        return false;
+    }
+
+    @Override
+    public List<Car> getCar() {
+        List<Car> result = new ArrayList<Car>();
+        try {
+            String str = PHPtools.GET(WEB_URL + "Car.php");
+            JSONArray array = new JSONObject(str).getJSONArray("Car");
+            for (int i = 0; i < array.length(); i++) {
+                JSONObject jsonObject = array.getJSONObject(i);
+                Car car = new Car();
+                car.setCarNumber_id(jsonObject.getInt("_id"));
+                car.setFixedBranch(jsonObject.getInt("fixedBranch"));
+                car.setKilometersTraveled(jsonObject.getInt("kilometersTraveled"));
+                car.setModel(jsonObject.getInt("model"));
+
+                result.add(car);
+            }
+            return result;
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    @Override
+    public long addCarReserve(ContentValues values) {
+        try {
+            String result = PHPtools.POST(WEB_URL + "/addReserve.php", values);
+            long id = Long.parseLong(result);
+            if (id > 0)
+                SetUpdate();
+            printLog("addReserve:\n" + result);
+            return id;
+        } catch (IOException e)
+        {
+            printLog("addReserve Exception:\n" + e);
+            return -1;
+        }
+    }
+
+    @Override
+    public boolean removeCarReserve(int id) {
+        return false;
+    }
+
+    @Override
+    public boolean updateCarReserve(long id, ContentValues values) {
+        return false;
+    }
+
+    @Override
+    public List<CarReserve> getCarReserve() {
+        List<CarReserve> result = new ArrayList<CarReserve>();
+        try {
+            String str = PHPtools.GET(WEB_URL + "CarReserve.php");
+            JSONArray array = new JSONObject(str).getJSONArray("CarReserve");
+            for (int i = 0; i < array.length(); i++) {
+                JSONObject jsonObject = array.getJSONObject(i);
+                CarReserve carReserve = new CarReserve();
+                carReserve.setCarNumber(jsonObject.getInt("carNumber"));
+                carReserve.setClientNumber(jsonObject.getInt("clientNumbe"));
+                carReserve.setEndKilometers(jsonObject.getInt("endKilometers"));
+                carReserve.setFueled(jsonObject.getBoolean("isFueled"));
+                carReserve.setLitersFueled(jsonObject.getInt("litersFueled"));
+                carReserve.setOpened(jsonObject.getBoolean("isOpened"));
+                carReserve.setRentBegginingDate(jsonObject.getString("rentBegginingDate"));
+                carReserve.setRentEndDate(jsonObject.getString("rentEndDate"));
+                carReserve.setReserveNumber_id(jsonObject.getInt("creditCardNumber"));
+                carReserve.setStartKilometers(jsonObject.getLong("startKilometers"));
+                carReserve.setTotalToPay(jsonObject.getLong("totalToPay"));
+
+                result.add(carReserve);
+            }
+            return result;
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    @Override
+    public boolean isUpdate() {
+        return false;
     }
 
 
