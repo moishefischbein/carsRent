@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -24,9 +25,10 @@ public class AddCarModelActivity extends Activity implements View.OnClickListene
     private EditText companyNameText;
     private EditText modelNameEditText;
     private EditText motorVolumeEditText;
-    private EditText isAutomaticEditText;
     private EditText numberOfSeatsEditText;
     private Button addCarModelButton;
+    private CheckBox isAutomaticCheckBox;
+    private int checkBox;
 
 
     private void findViews() {
@@ -34,9 +36,10 @@ public class AddCarModelActivity extends Activity implements View.OnClickListene
         companyNameText = (EditText)findViewById( R.id.CompanyNameText );
         modelNameEditText = (EditText)findViewById( R.id.ModelNameEditText);
         motorVolumeEditText = (EditText)findViewById( R.id.MotorVolumeEditText );
-        isAutomaticEditText = (EditText)findViewById( R.id.IsAutomaticEditText);
+        isAutomaticCheckBox = (CheckBox)findViewById( R.id.IsAutomaticEditText);
         numberOfSeatsEditText = (EditText)findViewById( R.id.NumberOfSeatsEditText);
         addCarModelButton = (Button)findViewById( R.id.addCarModelButton);
+
 
         addCarModelButton.setOnClickListener( this );
     }
@@ -49,7 +52,7 @@ public class AddCarModelActivity extends Activity implements View.OnClickListene
 
 
 
-            values.put(Functions.CarModelConst.ISAUTOMATIC, isAutomaticEditText.getText().toString());
+            values.put(Functions.CarModelConst.ISAUTOMATIC, Integer.toString(checkBox));
             values.put(Functions.CarModelConst.ENGINE_VOLUME, motorVolumeEditText.getText().toString());
             values.put(Functions.CarModelConst.MODEL_NAME, modelNameEditText.getText().toString());
             values.put(Functions.CarModelConst.SEATING, numberOfSeatsEditText.getText().toString());
@@ -99,15 +102,36 @@ public class AddCarModelActivity extends Activity implements View.OnClickListene
         }
     }
 
+    public void onCheckboxClicked(View view) {
+        // Is the view now checked?
+        boolean checked = ((CheckBox) view).isChecked();
+
+        // Check which checkbox was clicked
+        switch(view.getId()) {
+            case R.id.IsAutomaticEditText:
+                if (checked)
+                {
+                    checkBox = 1;
+
+                }
+                else {
+                    checkBox = 0;
+
+                }
+
+                break;
+            // TODO: Veggie sandwich
+        }
+    }
+
     //this funcion check if the all field are filled
     boolean isFullTheAllTexBox(){
         String LN = modelCodeIdText.getText().toString();
         String FN = numberOfSeatsEditText.getText().toString();
         String CI = modelNameEditText.getText().toString();
         String TL = motorVolumeEditText.getText().toString();
-        String EM = isAutomaticEditText.getText().toString();
         String CC = numberOfSeatsEditText.getText().toString();
-        if(LN.isEmpty()|| FN.isEmpty() || CI.isEmpty() || TL.isEmpty() || EM.isEmpty() || CC.isEmpty()){
+        if(LN.isEmpty()|| FN.isEmpty() || CI.isEmpty() || TL.isEmpty()  || CC.isEmpty()){
             return false;
         }
         return true;

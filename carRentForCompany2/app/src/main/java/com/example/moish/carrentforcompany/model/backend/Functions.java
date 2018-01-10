@@ -139,7 +139,7 @@ public class Functions {
 
     public static CarModel contentValuesToCarModel(ContentValues contentValues) {
         CarModel carModel = new CarModel();
-        carModel.setAutomatic(contentValues.getAsBoolean(CarModelConst.ISAUTOMATIC));
+        carModel.setAutomatic(contentValues.getAsInteger(CarModelConst.ISAUTOMATIC));
         carModel.setNumberOfSeats(contentValues.getAsInteger(CarModelConst.SEATING));
         carModel.setMotorVolume(contentValues.getAsInteger(CarModelConst.ENGINE_VOLUME));
         carModel.setModelName(contentValues.getAsString(CarModelConst.MODEL_NAME));
@@ -176,9 +176,9 @@ public class Functions {
         theCarReserve.setCarNumber(carReserve.getAsInteger(CarReserveConst.CAR_NUMBER));
         theCarReserve.setClientNumber(carReserve.getAsInteger(CarReserveConst.CLIENT_NUMBER));
         theCarReserve.setEndKilometers(carReserve.getAsDouble(CarReserveConst.END_KILOMETERS));
-        theCarReserve.setFueled(carReserve.getAsBoolean(CarReserveConst.IS_FUELED));
+        theCarReserve.setFueled(carReserve.getAsInteger(CarReserveConst.IS_FUELED));
         theCarReserve.setLitersFueled(carReserve.getAsInteger(CarReserveConst.LITERS_FUELED));
-        theCarReserve.setOpened(carReserve.getAsBoolean(CarReserveConst.IS_OPENED));
+        theCarReserve.setOpened(carReserve.getAsInteger(CarReserveConst.IS_OPENED));
         theCarReserve.setRentBegginingDate(carReserve.getAsString(CarReserveConst.RENT_BEGGINING_DATE));
         theCarReserve.setRentEndDate(carReserve.getAsString(CarReserveConst.RENT_END_DATE));
         theCarReserve.setReserveNumber_id(carReserve.getAsInteger(CarReserveConst.RESERVE_NUMBER));

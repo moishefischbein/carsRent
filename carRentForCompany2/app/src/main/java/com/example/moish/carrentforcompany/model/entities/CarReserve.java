@@ -9,19 +9,19 @@ import java.util.Calendar;
 public class CarReserve {
 
     int clientNumber;
-    boolean isOpened;
+    int isOpened;
     int carNumber;
     String rentBegginingDate;
     String rentEndDate;
     double startKilometers;
     double endKilometers;
-    boolean isFueled;
+    int isFueled;
     int litersFueled;
     double totalToPay;
     int reserveNumber_id;
 
-    public CarReserve(int clientNumber, boolean isOpened, int carNumber, String rentBegginingDate,
-                      String rentEndDate, double startKilometers, double endKilometers, boolean isFueled,
+    public CarReserve(int clientNumber, int isOpened, int carNumber, String rentBegginingDate,
+                      String rentEndDate, double startKilometers, double endKilometers, int isFueled,
                       int litersFueled, double totalToPay, int reserveNumber_id) {
 
         this.clientNumber = clientNumber;
@@ -36,11 +36,11 @@ public class CarReserve {
         this.totalToPay = totalToPay;
         this.reserveNumber_id = reserveNumber_id;
     }
-    public CarReserve(int clientNumber, boolean isOpened, int carNumber, String rentBegginingDate,
+    public CarReserve(int clientNumber, int isOpened, int carNumber, String rentBegginingDate,
                       String rentEndDate, double startKilometers, double endKilometers,
-                      boolean isFueled, double totalToPay, int reserveNumber_id) throws Exception {
+                      int isFueled, double totalToPay, int reserveNumber_id) throws Exception {
 
-        if (isFueled == true)
+        if (isFueled == 1)
             throw new Exception("you forgot to write how many liters you put");
 
         this.clientNumber = clientNumber;
@@ -50,7 +50,7 @@ public class CarReserve {
         this.rentEndDate = rentEndDate;
         this.startKilometers = startKilometers;
         this.endKilometers = endKilometers;
-        this.isFueled = false;
+        this.isFueled = 0;
         this.totalToPay = totalToPay;
         this.reserveNumber_id = reserveNumber_id;
         this.litersFueled = 0;
@@ -67,11 +67,11 @@ public class CarReserve {
         this.clientNumber = clientNumber;
     }
 
-    public boolean isOpened() {
+    public int isOpened() {
         return isOpened;
     }
 
-    public void setOpened(boolean opened) {
+    public void setOpened(int opened) {
         isOpened = opened;
     }
 
@@ -115,11 +115,11 @@ public class CarReserve {
         this.endKilometers = endKilometers;
     }
 
-    public boolean isFueled() {
+    public int isFueled() {
         return isFueled;
     }
 
-    public void setFueled(boolean fueled) {
+    public void setFueled(int fueled) {
         isFueled = fueled;
     }
 

@@ -139,7 +139,7 @@ public class MySQL_DBManager implements DB_manager {
                 carModel.setCompanyName(jsonObject.getString("companyName"));
                 carModel.setMotorVolume(jsonObject.getInt("motorVolume"));
                 carModel.setNumberOfSeats(jsonObject.getInt("numberOfSeats"));
-                carModel.setAutomatic(jsonObject.getBoolean("isAutomatic"));
+                carModel.setAutomatic(jsonObject.getInt("isAutomatic"));
                 carModel.setModelCode(jsonObject.getInt("_id"));
 
                 result.add(carModel);
@@ -289,14 +289,14 @@ public class MySQL_DBManager implements DB_manager {
                 JSONObject jsonObject = array.getJSONObject(i);
                 CarReserve carReserve = new CarReserve();
                 carReserve.setCarNumber(jsonObject.getInt("carNumber"));
-                carReserve.setClientNumber(jsonObject.getInt("clientNumbe"));
+                carReserve.setClientNumber(jsonObject.getInt("clientNumber"));
                 carReserve.setEndKilometers(jsonObject.getInt("endKilometers"));
-                carReserve.setFueled(jsonObject.getBoolean("isFueled"));
+                carReserve.setFueled(jsonObject.getInt("isFueled"));
                 carReserve.setLitersFueled(jsonObject.getInt("litersFueled"));
-                carReserve.setOpened(jsonObject.getBoolean("isOpened"));
+                carReserve.setOpened(jsonObject.getInt("isOpened"));
                 carReserve.setRentBegginingDate(jsonObject.getString("rentBegginingDate"));
                 carReserve.setRentEndDate(jsonObject.getString("rentEndDate"));
-                carReserve.setReserveNumber_id(jsonObject.getInt("creditCardNumber"));
+                carReserve.setReserveNumber_id(jsonObject.getInt("_id"));
                 carReserve.setStartKilometers(jsonObject.getLong("startKilometers"));
                 carReserve.setTotalToPay(jsonObject.getLong("totalToPay"));
 
