@@ -43,7 +43,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/is_opened"
-            android:onClick="onCheckboxClicked"/>
+            android:onClick="onCheckboxClicked"
+            android:visibility="gone"/>
 
         <EditText
             android:id="@+id/RentBegginning"
@@ -69,13 +70,14 @@
             android:hint="@string/start_kilometers"
             android:inputType="number" />
 
-        <EditText
+      <EditText
             android:id="@+id/EndKilometers"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:ems="10"
             android:hint="@string/end_kilometers"
-            android:inputType="number" />
+            android:inputType="number"
+          android:visibility="gone"/>
 
 
         <CheckBox
@@ -101,7 +103,8 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:hint="@string/total_to_pay"
-            android:inputType="number" />
+            android:inputType="number"
+            android:visibility="gone"/>
 
         <Button
             android:id="@+id/addCarReserveButton"

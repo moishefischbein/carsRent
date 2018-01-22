@@ -1,14 +1,8 @@
 package com.example.moish.carrentforcompany.model.datasource;
 
 import android.content.ContentValues;
-import android.database.Cursor;
-import android.database.MatrixCursor;
-import android.inputmethodservice.Keyboard;
-import android.provider.MediaStore;
-import android.util.Log;
 import android.widget.Toast;
 
-import com.example.moish.carrentforcompany.model.adapter.ClientAdapter;
 import com.example.moish.carrentforcompany.model.backend.DB_manager;
 import com.example.moish.carrentforcompany.model.backend.Functions;
 import com.example.moish.carrentforcompany.model.entities.Branch;
@@ -23,6 +17,10 @@ import org.json.JSONObject;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import com.example.moish.carrentforcompany.model.backend.Lists;
+
+import static com.example.moish.carrentforcompany.model.backend.Lists.freeCars;
+import static com.example.moish.carrentforcompany.model.backend.Lists.removeCar;
 
 /**
  * Created by moish on 18/12/2017.
@@ -206,11 +204,23 @@ public class MySQL_DBManager implements DB_manager {
     @Override
     public long addCar(ContentValues values) {
         try {
-            String result = PHPtools.POST(WEB_URL + "addCar.php", values);
-            long id = Long.parseLong(result);
+            String resultCar = PHPtools.POST(WEB_URL + "addCar.php", values);
+            String resultFreeCar = PHPtools.POST(WEB_URL + "addFreeCars.php", values);
+
+            if(resultCar.length() > 10){
+                printLog(resultCar);
+                return -1;
+            }
+
+            if(resultFreeCar.length() > 10){
+                printLog(resultFreeCar);
+                return -2;
+            }
+
+            long id = Long.parseLong(resultCar);
             if (id > 0)
                 SetUpdate();
-            printLog("addCar:\n" + result);
+            printLog("addCar:\n" + resultCar);
             return id;
         } catch (IOException e)
         {
@@ -227,7 +237,7 @@ public class MySQL_DBManager implements DB_manager {
     @Override
     public boolean updateCar(long id, ContentValues values) {
         return false;
-    }
+    }//...........................................................................................................
 
     @Override
     public List<Car> getCar() {
@@ -257,10 +267,24 @@ public class MySQL_DBManager implements DB_manager {
     public long addCarReserve(ContentValues values) {
         try {
             String result = PHPtools.POST(WEB_URL + "/addReserve.php", values);
+            String resultRemove = PHPtools.POST(WEB_URL + "/deleteFreeCar.php", values);
+
+           /* //    values.put(Functions.CarConst.CAR_NUMBER, _id.getText().toString());
+            ContentValues v = new ContentValues();
+            v.put(Functions.CarConst.CAR_NUMBER,Integer.toString((Functions.contentValuesToCarReserve(values).getCarNumber())));
+            String resultRemove = PHPtools.POST(WEB_URL + "/deleteFreeCar.php", v);*/
+            if(result.length() > 10){
+                printLog(result);
+                return -1;
+            }
             long id = Long.parseLong(result);
             if (id > 0)
                 SetUpdate();
             printLog("addReserve:\n" + result);
+
+            int carId = values.getAsInteger(Functions.CarReserveConst.CAR_NUMBER);
+            removeCar(carId);
+
             return id;
         } catch (IOException e)
         {

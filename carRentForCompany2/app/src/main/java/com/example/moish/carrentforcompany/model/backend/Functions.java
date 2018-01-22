@@ -9,8 +9,6 @@ import com.example.moish.carrentforcompany.model.entities.CarModel;
 import com.example.moish.carrentforcompany.model.entities.CarReserve;
 import com.example.moish.carrentforcompany.model.entities.Client;
 
-import java.util.Calendar;
-
 /**
  * Created by moish on 16/11/2017.
  */

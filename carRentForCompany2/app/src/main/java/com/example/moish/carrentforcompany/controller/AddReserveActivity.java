@@ -155,17 +155,17 @@ public class AddReserveActivity extends AppCompatActivity implements View.OnClic
     boolean isFullTheAllTexBox(){
         String RN = ReserveNumberId.getText().toString();
         String CN = ClientNumber.getText().toString();
-        String IO = IsOpened.getText().toString();
+       // String IO = IsOpened.getText().toString();
         String RB = RentBegginning.getText().toString();
         String RE = RentEnd.getText().toString();
         String SK = StartKilometers.getText().toString();
-        String EK = EndKilometers.getText().toString();
+     //   String EK = EndKilometers.getText().toString();
         String IF = IsFueled.getText().toString();
         String LF = LitersFueled.getText().toString();
-        String TP = TotalToPay.getText().toString();
+       // String TP = TotalToPay.getText().toString();
         String CNB = CarNumber.getText().toString();
-        if(RN.isEmpty()|| CN.isEmpty() || IO.isEmpty() || RB.isEmpty() || RE.isEmpty() || SK.isEmpty()||
-                EK.isEmpty()|| IF.isEmpty()|| LF.isEmpty()|| TP.isEmpty()|| CNB.isEmpty()){
+        if(RN.isEmpty()|| CN.isEmpty() ||  RB.isEmpty() || RE.isEmpty() || SK.isEmpty()||
+               IF.isEmpty()|| LF.isEmpty()|| CNB.isEmpty()){
             return false;
         }
         return true;
