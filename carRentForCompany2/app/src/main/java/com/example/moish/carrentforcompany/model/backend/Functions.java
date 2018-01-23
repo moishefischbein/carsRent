@@ -9,8 +9,6 @@ import com.example.moish.carrentforcompany.model.entities.CarModel;
 import com.example.moish.carrentforcompany.model.entities.CarReserve;
 import com.example.moish.carrentforcompany.model.entities.Client;
 
-import java.util.Calendar;
-
 /**
  * Created by moish on 16/11/2017.
  */
@@ -25,9 +23,9 @@ public class Functions {
 
     public static class ClientConst {
         public static final String ID = "_id";
-        public static final String FIRSTNAME = "firtsname";
-        public static final String LASTTNAME = "lastname";
-        public static final String PHONE = "phone";
+        public static final String FIRSTNAME = "firstName";
+        public static final String LASTTNAME = "lastName";
+        public static final String PHONE = "phoneNumber";
         public static final String EMAIL = "email";
         public static final String CREDITCARDNUMBER = "CreditCardNumber";
 
@@ -46,11 +44,11 @@ public class Functions {
 
     public static class CarModelConst {
         public static final String MODEL_ID = "_id";
-        public static final String COMPANY_NAME = "CompanyName";
+        public static final String COMPANY_NAME = "companyName";
         public static final String MODEL_NAME = "modelName";
-        public static final String ENGINE_VOLUME = "engineVolume";
+        public static final String ENGINE_VOLUME = "motorVolume";
         public static final String ISAUTOMATIC = "isAutomatic";
-        public static final String SEATING = "seating";
+        public static final String SEATING = "numberOfSeats";
     }
 
     public static class CarConst {
@@ -139,7 +137,7 @@ public class Functions {
 
     public static CarModel contentValuesToCarModel(ContentValues contentValues) {
         CarModel carModel = new CarModel();
-        carModel.setAutomatic(contentValues.getAsBoolean(CarModelConst.ISAUTOMATIC));
+        carModel.setAutomatic(contentValues.getAsInteger(CarModelConst.ISAUTOMATIC));
         carModel.setNumberOfSeats(contentValues.getAsInteger(CarModelConst.SEATING));
         carModel.setMotorVolume(contentValues.getAsInteger(CarModelConst.ENGINE_VOLUME));
         carModel.setModelName(contentValues.getAsString(CarModelConst.MODEL_NAME));
@@ -176,9 +174,9 @@ public class Functions {
         theCarReserve.setCarNumber(carReserve.getAsInteger(CarReserveConst.CAR_NUMBER));
         theCarReserve.setClientNumber(carReserve.getAsInteger(CarReserveConst.CLIENT_NUMBER));
         theCarReserve.setEndKilometers(carReserve.getAsDouble(CarReserveConst.END_KILOMETERS));
-        theCarReserve.setFueled(carReserve.getAsBoolean(CarReserveConst.IS_FUELED));
+        theCarReserve.setFueled(carReserve.getAsInteger(CarReserveConst.IS_FUELED));
         theCarReserve.setLitersFueled(carReserve.getAsInteger(CarReserveConst.LITERS_FUELED));
-        theCarReserve.setOpened(carReserve.getAsBoolean(CarReserveConst.IS_OPENED));
+        theCarReserve.setOpened(carReserve.getAsInteger(CarReserveConst.IS_OPENED));
         theCarReserve.setRentBegginingDate(carReserve.getAsString(CarReserveConst.RENT_BEGGINING_DATE));
         theCarReserve.setRentEndDate(carReserve.getAsString(CarReserveConst.RENT_END_DATE));
         theCarReserve.setReserveNumber_id(carReserve.getAsInteger(CarReserveConst.RESERVE_NUMBER));

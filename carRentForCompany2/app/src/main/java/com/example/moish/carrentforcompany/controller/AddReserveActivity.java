@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -25,16 +26,18 @@ public class AddReserveActivity extends AppCompatActivity implements View.OnClic
 
     private EditText ReserveNumberId;
     private EditText ClientNumber;
-    private EditText IsOpened;
+    private CheckBox IsOpened;
     private EditText RentBegginning;
     private EditText RentEnd;
     private EditText StartKilometers;
     private EditText EndKilometers;
-    private EditText IsFueled;
+    private CheckBox IsFueled;
     private EditText LitersFueled;
     private EditText TotalToPay;
     private EditText CarNumber;
     private Button addCarReserveButton;
+    private int isOpenCheckBox;
+    private int isFueledCheckBox;
 
     /**
      * Find the Views in the layout<br />
@@ -45,12 +48,12 @@ public class AddReserveActivity extends AppCompatActivity implements View.OnClic
     private void findViews() {
         ReserveNumberId = (EditText)findViewById( R.id.ReserveNumber_id );
         ClientNumber = (EditText)findViewById( R.id.ClientNumber );
-        IsOpened = (EditText)findViewById( R.id.IsOpened );
+        IsOpened = (CheckBox) findViewById( R.id.IsOpened );
         RentBegginning = (EditText)findViewById( R.id.RentBegginning );
         RentEnd = (EditText)findViewById( R.id.RentEnd );
         StartKilometers = (EditText)findViewById( R.id.StartKilometers );
         EndKilometers = (EditText)findViewById( R.id.EndKilometers );
-        IsFueled = (EditText)findViewById( R.id.IsFueled );
+        IsFueled = (CheckBox) findViewById( R.id.IsFueled );
         LitersFueled = (EditText)findViewById( R.id.LitersFueled );
         TotalToPay = (EditText)findViewById( R.id.TotalToPay );
         CarNumber = (EditText)findViewById( R.id.CarNumber );
@@ -75,9 +78,9 @@ public class AddReserveActivity extends AppCompatActivity implements View.OnClic
             values.put(Functions.CarReserveConst.RESERVE_NUMBER, ReserveNumberId.getText().toString());
             values.put(Functions.CarReserveConst.RENT_END_DATE, RentEnd.getText().toString());
             values.put(Functions.CarReserveConst.RENT_BEGGINING_DATE, RentBegginning.getText().toString());
-            values.put(Functions.CarReserveConst.IS_OPENED, IsOpened.getText().toString());
+            values.put(Functions.CarReserveConst.IS_OPENED, Integer.toString(isOpenCheckBox));
             values.put(Functions.CarReserveConst.LITERS_FUELED, LitersFueled.getText().toString());
-            values.put(Functions.CarReserveConst.IS_FUELED, IsFueled.getText().toString());
+            values.put(Functions.CarReserveConst.IS_FUELED,  Integer.toString(isFueledCheckBox));
             values.put(Functions.CarReserveConst.END_KILOMETERS, EndKilometers.getText().toString());
             values.put(Functions.CarReserveConst.CLIENT_NUMBER, ClientNumber.getText().toString());
             values.put(Functions.CarReserveConst.CAR_NUMBER, CarNumber.getText().toString());
@@ -118,21 +121,51 @@ public class AddReserveActivity extends AppCompatActivity implements View.OnClic
         }
     }
 
+    public void onCheckboxClicked(View view) {
+        // Is the view now checked?
+        boolean checked = ((CheckBox) view).isChecked();
+
+        // Check which checkbox was clicked
+        switch(view.getId()) {
+            case R.id.IsFueled:
+                if (checked)
+                {
+                    isFueledCheckBox = 1;
+                    LitersFueled.setVisibility(View.VISIBLE);
+                }
+                else {
+                    isFueledCheckBox = 0;
+                    LitersFueled.setVisibility(View.GONE);
+                }
+            case R.id.IsOpened:
+                if (checked)
+                {
+                    isOpenCheckBox = 1;
+                }
+                else {
+                    isOpenCheckBox = 0;
+                }
+
+                break;
+            // TODO: Veggie sandwich
+        }
+    }
+
     //this funcion check if the all field are filled
     boolean isFullTheAllTexBox(){
         String RN = ReserveNumberId.getText().toString();
         String CN = ClientNumber.getText().toString();
-        String IO = IsOpened.getText().toString();
+       // String IO = IsOpened.getText().toString();
         String RB = RentBegginning.getText().toString();
         String RE = RentEnd.getText().toString();
         String SK = StartKilometers.getText().toString();
-        String EK = EndKilometers.getText().toString();
+     //   String EK = EndKilometers.getText().toString();
         String IF = IsFueled.getText().toString();
         String LF = LitersFueled.getText().toString();
-        String TP = TotalToPay.getText().toString();
+       // String TP = TotalToPay.getText().toString();
         String CNB = CarNumber.getText().toString();
-        if(RN.isEmpty()|| CN.isEmpty() || IO.isEmpty() || RB.isEmpty() || RE.isEmpty() || SK.isEmpty()||
-                EK.isEmpty()|| IF.isEmpty()|| LF.isEmpty()|| TP.isEmpty()|| CNB.isEmpty()){
+        if(RN.isEmpty()|| CN.isEmpty() ||  RB.isEmpty() || RE.isEmpty() || SK.isEmpty()||
+               IF.isEmpty()|| LF.isEmpty()|| CNB.isEmpty()){
             return false;
         }
         return true;

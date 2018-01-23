@@ -1,6 +1,7 @@
 package com.example.moish.carrentforcompany.model.backend;
 
 import com.example.moish.carrentforcompany.model.datasource.List_DBManager;
+import com.example.moish.carrentforcompany.model.datasource.MySQL_DBManager;
 
 /**
  * Created by moish on 16/11/2017.
@@ -11,7 +12,7 @@ public class DBManagerFactory {
 
     public static DB_manager getManager() {
         if (manager == null)
-            manager = new List_DBManager(); //MySQL_DBManager();
+            manager = new MySQL_DBManager();//List_DBManager();
         return manager;
     }
 

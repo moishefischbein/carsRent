@@ -41,13 +41,20 @@
         android:hint="@string/motor_volume"
         android:inputType="phone" />
 
-    <EditText
+    <!--<EditText
         android:id="@+id/IsAutomaticEditText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="@string/is_automatic"
-        android:inputType="phone" />
+        android:inputType="phone" />-->
+
+    <CheckBox
+        android:id="@+id/IsAutomaticEditText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Is automatic?"
+        android:onClick="onCheckboxClicked"/>
 
     <EditText
         android:id="@+id/NumberOfSeatsEditText"

@@ -40,5 +40,5 @@ public interface DB_manager {
     boolean updateCarReserve(long id, ContentValues values);
     List<CarReserve> getCarReserve();
 
-
+    public boolean isUpdate();
 }

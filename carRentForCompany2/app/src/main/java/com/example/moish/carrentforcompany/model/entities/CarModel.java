@@ -10,7 +10,7 @@ public class CarModel {
     String companyName;
     String modelName;
     int motorVolume;
-    Boolean isAutomatic;
+    int isAutomatic;
     int numberOfSeats;
 
     public int getModelCode_id() {
@@ -45,12 +45,12 @@ public class CarModel {
         this.motorVolume = motorVolume;
     }
 
-    public Boolean getAutomatic() {
+    public int getAutomatic() {
         return isAutomatic;
     }
 
-    public void setAutomatic(Boolean automatic) {
-        this.isAutomatic = automatic;
+    public void setAutomatic(int automatic) {
+      this.isAutomatic = automatic;
     }
 
     public int getNumberOfSeats() {
@@ -66,7 +66,7 @@ public class CarModel {
     }
 
     public CarModel(int modelCode_id, String companyName, String modelName,
-                    int motorVolume, Boolean isAutomatic, int numberOfSeats) {
+                    int motorVolume, int isAutomatic, int numberOfSeats) {
         this.modelCode_id = modelCode_id;
         this.companyName = companyName;
         this.modelName = modelName;

@@ -37,13 +37,14 @@
             android:hint="@string/car_number"
             android:inputType="number" />
 
-        <EditText
+
+        <CheckBox
             android:id="@+id/IsOpened"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="@string/is_opened"
-            android:inputType="text" />
+            android:text="@string/is_opened"
+            android:onClick="onCheckboxClicked"
+            android:visibility="gone"/>
 
         <EditText
             android:id="@+id/RentBegginning"
@@ -69,21 +70,23 @@
             android:hint="@string/start_kilometers"
             android:inputType="number" />
 
-        <EditText
+      <EditText
             android:id="@+id/EndKilometers"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:ems="10"
             android:hint="@string/end_kilometers"
-            android:inputType="number" />
+            android:inputType="number"
+          android:visibility="gone"/>
 
-        <EditText
+
+        <CheckBox
             android:id="@+id/IsFueled"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="@string/is_fueled"
-            android:inputType="text" />
+            android:text="@string/is_fueled"
+            android:onClick="onCheckboxClicked" />
+
 
         <EditText
             android:id="@+id/LitersFueled"
@@ -91,7 +94,8 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:hint="@string/liters_fueled"
-            android:inputType="number" />
+            android:inputType="number"
+            android:visibility="gone"/>
 
         <EditText
             android:id="@+id/TotalToPay"
@@ -99,7 +103,8 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:hint="@string/total_to_pay"
-            android:inputType="number" />
+            android:inputType="number"
+            android:visibility="gone"/>
 
         <Button
             android:id="@+id/addCarReserveButton"

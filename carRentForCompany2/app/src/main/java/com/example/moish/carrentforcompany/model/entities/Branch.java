@@ -6,8 +6,8 @@ package com.example.moish.carrentforcompany.model.entities;
 public class Branch {
 
     String City, Street, AdressNumber;
-    int NumberOfParkingAvailable;
-    int BranchNumber_id;
+    int    NumberOfParkingAvailable;
+    int    BranchNumber_id;
 
     public String getCity() {
         return City;

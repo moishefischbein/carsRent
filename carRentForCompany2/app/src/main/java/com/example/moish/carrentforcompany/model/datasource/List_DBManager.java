@@ -15,8 +15,6 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-import static android.R.id.list;
-
 /**
  * Created by moish on 16/11/2017.
  */
@@ -243,6 +241,13 @@ import static android.R.id.list;
     public List<CarReserve> getCarReserve() {
         return carReserves;
     }
+
+    @Override
+    public boolean isUpdate() {
+        return false;
+    }
+
+
 }
 
 
