@@ -73,7 +73,7 @@ public class ReserveAdapter extends BaseAdapter {
             }
 int a =0;
             name.setText("Car Number: " + CarReserve.getCarNumber() + ",     Client Number: " + CarReserve.getClientNumber(
-            )+",    Is the reserve opened:"+isOpened );
+            )+",    Is the reserve opened: "+isOpened );
             ide.setText(Integer.toString(CarReserve.getReserveNumber_id()));
 
         }catch (Exception ex){ex.toString();}
