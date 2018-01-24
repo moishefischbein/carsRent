@@ -49,17 +49,18 @@ public class ReserveAdapter extends BaseAdapter {
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
 
-        View v = activity.getLayoutInflater()
-                .inflate(R.layout.item_row, viewGroup, false);
-
+        if(view == null) {
+            view = activity.getLayoutInflater()
+                    .inflate(R.layout.item_row, viewGroup, false);
+        }
         CarReserve CarReserve = reserves.get(i);
 
         try {
 
 
 
-            TextView ide = (TextView) v.findViewById(R.id.itemId);
-            TextView name = (TextView) v.findViewById(R.id.itemName);
+            TextView ide = (TextView) view.findViewById(R.id.itemId);
+            TextView name = (TextView) view.findViewById(R.id.itemName);
 
             String isOpened;
             if(CarReserve.isOpened()==1)
@@ -76,7 +77,7 @@ int a =0;
             ide.setText(Integer.toString(CarReserve.getReserveNumber_id()));
 
         }catch (Exception ex){ex.toString();}
-        return v;
+        return view;
 
     }
     {
