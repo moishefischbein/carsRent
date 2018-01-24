@@ -61,7 +61,18 @@ public class ReserveAdapter extends BaseAdapter {
             TextView ide = (TextView) v.findViewById(R.id.itemId);
             TextView name = (TextView) v.findViewById(R.id.itemName);
 
-            name.setText("Car Number: " + CarReserve.getCarNumber() + ". Client Number: " + CarReserve.getClientNumber());
+            String isOpened;
+            if(CarReserve.isOpened()==1)
+            {
+                isOpened = "true";
+            }
+            else
+            {
+                isOpened = "false";
+            }
+
+            name.setText("Car Number: " + CarReserve.getCarNumber() + ". Client Number: " + CarReserve.getClientNumber(
+            )+"Is the reserve opened:"+isOpened );
             ide.setText(Integer.toString(CarReserve.getReserveNumber_id()));
 
         }catch (Exception ex){ex.toString();}
